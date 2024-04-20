@@ -1,5 +1,10 @@
 import { getEventWeekend } from '@/utils/helpers';
+import { Metadata } from 'next';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: `Tobbedansen ${new Date().getFullYear()} - Zaterdag`,
+};
 
 const Page = () => {
   const { saturday } = getEventWeekend();
