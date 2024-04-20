@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-// next.config.js
+
 const nextConfig = {
   output: 'export',
   images: {
@@ -8,6 +8,10 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
   transpilePackages: ['next-image-export-optimizer'],
+  reactStrictMode: true,
+  compiler: {
+    removeConsole: false,
+  },
   env: {
     nextImageExportOptimizer_imageFolderPath: 'public/images',
     nextImageExportOptimizer_exportFolderPath: 'out',

@@ -1,10 +1,13 @@
+// TODO: use exportedImage for optimization
 import ExportedImage from 'next-image-export-optimizer';
 
 import { Countdown } from '@/components/countdown';
+import { Body } from '@/components/layouts';
+import { roboto, montserrat } from './fonts';
 
 export default function Home() {
   return (
-    <main style={{ height: '100%' }} className='u-bg-picture'>
+    <Body className={`${roboto.variable} ${montserrat.variable} u-bg-picture`}>
       <section className='o-row'>
         <div className='o-container'>
           <div className='o-layout'>
@@ -25,6 +28,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </Body>
   );
 }

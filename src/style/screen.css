@@ -1,7 +1,7 @@
 html {
   font-size: 16px;
   line-height: 1.5;
-  font-family: 'Roboto', Helvetica, arial, sans-serif;
+
   color: #111;
 }
 
@@ -14,6 +14,7 @@ html {
   height: 100%;
   width: 100%;
   margin: 0;
+  font-family: var(--font-roboto), Helvetica, arial, sans-serif;
 }
 
 input.textbox-300 {
@@ -31,7 +32,7 @@ form {
 }
 
 button {
-  font-family: 'roboto';
+  font-family: var(--font-roboto);
   margin-top: 32px;
   margin-bottom: 32px;
   margin-left: 8px;
@@ -150,7 +151,7 @@ h6 {
 }
 
 p {
-  font-family: montserrat;
+  font-family: var(--font-montserrat);
   color: #707070;
   width: 100%;
 }
@@ -387,7 +388,7 @@ u {
 }
 
 .o-banner__image {
-  background-image: url('/img/MachelenPut.jpg');
+  background-image: url('/img/machelen-put-crowded.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -791,7 +792,7 @@ u {
 }
 
 .u-bg-picture {
-  background: url('/img/MachelenPut-tablet.jpg');
+  background: url('/img/machelen-put-crowded.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -803,8 +804,7 @@ u {
 
 @media (min-width: 992px) {
   .u-bg-picture {
-    background-image: url('/img/MachelenPut-desktop.jpg');
-    size: 100%;
+    background-image: url('/img/machelen-put-crowded.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

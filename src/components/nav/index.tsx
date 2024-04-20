@@ -20,7 +20,9 @@ export const Nav = ({ onMenuBtnClick }: NavProps) => {
                   {pages.map(({ title, href }) => {
                     return (
                       <li key={`desktop-nav-${title}`} className='c-nav__item'>
-                        <NavItem href={href}>{title}</NavItem>
+                        <NavItem onClick={onMenuBtnClick} href={href}>
+                          {title}
+                        </NavItem>
                       </li>
                     );
                   })}
@@ -81,7 +83,9 @@ export const MobileNav = ({ onMenuBtnClick }: MobileNavProps) => {
               {pages.map(({ href, title }) => {
                 return (
                   <li key={`mobile-nav-${title}`} className='c-nav__item'>
-                    <NavItem href={href}>{title}</NavItem>
+                    <NavItem onClick={onMenuBtnClick} href={href}>
+                      {title}
+                    </NavItem>
                   </li>
                 );
               })}

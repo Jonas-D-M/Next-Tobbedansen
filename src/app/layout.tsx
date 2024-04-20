@@ -1,15 +1,10 @@
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
-import '@/style/screen.css';
-import { Body } from '@/components/layouts';
-import Script from 'next/script';
 
-const roboto = Roboto({
-  weight: ['400', '700'],
-  style: ['normal'],
-  subsets: ['latin'],
-  display: 'swap',
-});
+import '@/style/screen.css';
+
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: `Tobbedansen ${new Date().getFullYear()}`,
@@ -21,9 +16,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang='nl'>
-      <Body className={roboto.className}>{children}</Body>
-    </html>
-  );
+  return <html lang='nl'>{children}</html>;
 }
