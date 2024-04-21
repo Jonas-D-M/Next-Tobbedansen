@@ -60,6 +60,9 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.2.25
+      database:
+        specifier: workspace:*
+        version: link:../../packages/database
       eslint:
         specifier: ^8
         version: 8.57.0
