@@ -14,7 +14,9 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish",
-    "manypkg:fix": "manypkg fix"
+    "manypkg:fix": "manypkg fix",
+    "db:generate": "turbo run db:generate",
+    "db:push": "turbo run db:push"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
