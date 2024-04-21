@@ -42,7 +42,7 @@ const Page = () => {
                 <h2>Met de fiets?</h2>
                 <div className='c-lead c-lead--text u-mb-lg'>
                   <p>
-                    Denk jij ook aan het milieu? Ben je sportief? Naam dan je
+                    Denk jij ook aan het milieu? Ben je sportief? Neem dan je
                     stalen ros en parkeer je fiets aan de aanliggende wegen of
                     in het dorpscentrum.
                   </p>
@@ -62,13 +62,13 @@ const Page = () => {
                   <ul>
                     <li>
                       <p>
-                        Op vrijdag 1 september openen de deuren om 19u en
+                        Op vrijdag 30 augustus openen de deuren om 19u en
                         sluiten we de eerste avond af om 2u.
                       </p>
                     </li>
                     <li>
                       <p>
-                        Op zaterdag 2 september gaan de deuren open om 14u, de
+                        Op zaterdag 31 augustus gaan de deuren open om 14u, de
                         eerste tobbe duikt van de schans af om 14u30. Om 4u gaan
                         de deuren dicht en keert de rust terug op het Roger
                         Raveelplein.
