@@ -7,7 +7,6 @@ const layout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Body className={`${roboto.variable} ${montserrat.variable}`}>
-        <img className='o-banner__image' src='/img/machelen-put-crowded.jpg' />
         {children}
         <Footer />
       </Body>
