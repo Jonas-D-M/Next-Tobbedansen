@@ -16,7 +16,8 @@
     "changeset:publish": "changeset publish",
     "manypkg:fix": "manypkg fix",
     "db:generate": "turbo run db:generate",
-    "db:push": "turbo run db:push"
+    "db:push": "turbo run db:push",
+    "prisma:studio": "turbo run prisma:studio"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",

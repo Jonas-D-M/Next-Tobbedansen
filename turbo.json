@@ -16,6 +16,10 @@
     },
     "db:push": {
       "cache": false
+    },
+    "prisma:studio": {
+      "persistent": true,
+      "cache": false
     }
   }
 }

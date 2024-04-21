@@ -1,6 +1,5 @@
 version: '3'
-volumes:
-  data:
+
 services:
   db:
     image: mariadb:10.3.39
@@ -11,3 +10,6 @@ services:
       - mariadb-data:/var/lib/mysql
     ports:
       - '3306:3306'
+
+volumes:
+  mariadb-data:
