@@ -1,6 +1,6 @@
 import TextInput from '@/components/inputs';
 import { Metadata } from 'next';
-import React, { useState } from 'react';
+import React from 'react';
 
 export const metadata: Metadata = {
   title: `Tobbedansen ${new Date().getFullYear()} - Inschrijvingen`,
@@ -66,7 +66,7 @@ const formItems = [
 ];
 
 const Page = () => {
-  const [entryCount, setEntryCount] = useState(1);
+  // const [entryCount, setEntryCount] = useState(1);
   return (
     <section className='o-row o-row--xl'>
       <div className='o-container u-max-width-xl'>
