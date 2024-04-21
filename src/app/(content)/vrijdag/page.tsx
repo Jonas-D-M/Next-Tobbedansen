@@ -27,23 +27,22 @@ const Page = () => {
               <div className='o-layout__item u-1-of-2-bp3'>
                 <p className='c-lead c-lead--text u-mb-lg'>
                   Iedereen die vorig jaar aanwezig was, kan getuigen.
-                  Tobbedansen 2022 was een editie om nooit te vergeten. Zowel
-                  <i>Zebras Are Timeless</i> als <i>Still Crazy</i> speelden de
-                  pannen van het dak waarna de DJ’s <i>Lamicious</i> en
-                  <i>Miles</i> het feestje op een magistrale wijze afwerkten.
-                  Kortom, het was een editie om in te kaderen.
+                  Tobbedansen 2023 was een editie om nooit te vergeten. Zowel{' '}
+                  <i>Opt gemakske</i> als <i>Go ninja GO</i> speelden de pannen
+                  van het dak waarna de DJ’s <i>Nine 2 Five</i> en{' '}
+                  <i>TWO FOR YOU</i> het feestje op een magistrale wijze
+                  afwerkten. Kortom, het was een editie om in te kaderen.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
                   Ook dit jaar mogen we natuurlijk niet onderdoen. We hebben
                   opnieuw enkele toppers op het affiche staan. Zo beginnen we om
-                  20u met plaatselijk talent <i>Opt gemakske</i> waarna
-                  <i>Go ninja GO</i>, bekend van onder meer Vlaanderen Feest,
-                  het feestje compleet zullen maken. Wanneer iedereen volledig
-                  is opgewarmd zal <i>Nine 2 Five</i> met enkele vette beats en
-                  Viool de ambiance naar een hoogtepunt brengen. Tot slot zal
-                  <i>TWO FOR YOU</i>
-                  driedubbele knopen in de veters van ieders dansschoenen
-                  draaien tot het einde van de avond!
+                  20u met het opkomende talent <i>Pixiedust</i> waarna{' '}
+                  <i>Still Crazy</i>, bekend van onder meer De Gentse Feesten,
+                  het feestje compleet zal maken. Wanneer iedereen volledig is
+                  opgewarmd zal <i>NotForRadio</i> met een gekke liveshow de
+                  ambiance naar een hoogtepunt brengen. Tot slot zal ons lokaal
+                  talent <i>Proudmich</i> driedubbele knopen in de veters van
+                  ieders dansschoenen draaien tot het einde van de avond!
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
                   Net zoals vorig jaar zijn er zowel combi-tickets als aparte
