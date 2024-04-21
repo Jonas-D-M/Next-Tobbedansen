@@ -34,26 +34,43 @@ const Page = () => {
                 </p>
 
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Vele jaren werden de deelnemers nog gescheiden van de bel door
-                  een obstakel, maar dit jaar grijpen we een laatste keer terug
-                  naar het concept van vorig jaar. Aan de start worden de
-                  deelnemers naar beneden geduwd om met een degelijke snelheid
-                  van de schans (met een helling van ± 20°) te razen. Die schans
-                  versmalt op het einde van 2.5m naar 1.5m. Vanaf deze schans
-                  komt de tobbe niet meteen op het water (zie onderstaande foto)
-                  maar op een ponton. Eenmaal op het ponton is het de bedoeling
-                  om op het einde binnen de aangeduide zone te remmen zodat de
-                  tobbe in de zone staat. Eenmaal de tobbe binnen de zone staat
-                  springen de deelnemers zo snel mogelijk naar de bel (2 meter)
-                  om prachtige prijzen binnen te halen. Vergeet zeker niet om
-                  het reglement er eens op na te lezen, hierin is duidelijk
-                  uitgelegd wat wel en niet mag.
+                  De laatste 3 jaar werden de deelnemers naar beneden geduwd op
+                  een ponton om zo snel mogelijk de bel te bereiken. Dit jaar
+                  grijpen we terug naar een nieuw concept. Aan de start worden
+                  de deelnemers naar beneden geduwd om met een degelijke
+                  snelheid van de schans (met een helling van ± 20°) te razen.
+                  Vanaf deze schans komt de tobbe rechtstreeks in het water
+                  terecht, eenmaal in het water varen/pedellen/… de deelnemers
+                  zo snel mogelijk naar het obstakel. Het obstakel zal je moeten
+                  opklimmen waarna je een hangbrug zal moeten overwinnen
+                  vooraleer je de bel kan luiden. Wanneer je als deelnemer
+                  uiteindelijk de bel kan luiden kan je prachtige prijzen binnen
+                  halen. Heb je veel zin om deel te nemen en prachtige prijzen
+                  te winnen, maar ben je net niet handig genoeg, te lui of heb
+                  je geen tijd om zelf een tobbe te bouwen? Dan kun je altijd
+                  deelnemen met onze eigen tobbe: de tobtobbe! Onze tobbe is
+                  geschikt voor 1 persoon of maximaal 2 personen.
                 </p>
-                <img className='u-mb-lg' src='img/parcour.png' alt='parcour' />
+
                 <p className='c-lead c-lead--text'>
-                  Inspiratie nodig? Kijk hier hoe het moet:
+                  Vergeet zeker niet om het reglement er eens op na te lezen,
+                  hierin is duidelijk uitgelegd wat wel en niet mag.
                 </p>
-                <div className='iframeWrapper u-mb-lg'>
+                <br />
+                <p className='c-lead c-lead--text'>Bovenaanzicht:</p>
+                <img
+                  className='u-mb-lg'
+                  src='img/parcour-1.jpg'
+                  alt='parcour'
+                />
+                <br />
+                <p className='c-lead c-lead--text'>Zijaanzicht:</p>
+                <img
+                  className='u-mb-lg'
+                  src='img/parcour-2.jpg'
+                  alt='parcour'
+                />
+                {/* <div className='iframeWrapper u-mb-lg'>
                   <iframe
                     width='560'
                     height='349'
@@ -62,24 +79,26 @@ const Page = () => {
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                     allowFullScreen
                   />
-                </div>
+                </div> */}
 
                 <p className='c-lead c-lead--text u-mb-lg'>
                   Zaterdag na de prijsuitreiking gaan we door met een tweede
-                  spetterend feestje. Dit wordt op gang getrokken door
-                  Cover-line, waarna THE JULIETS (gekend van de Vlinvestifal,
-                  Septemberfeesten, Stressfactor…) het feest compleet zullen
-                  maken na het vuurwerk.
+                  spetterend feestje. Dit wordt op gang getrokken door{' '}
+                  <i>Recourse52</i>, waarna <i>Uncle Phill</i> (gekend van de
+                  Engie Parkies, De Sinksenfoor, Druivenfestival…) het feest
+                  compleet zullen maken na het vuurwerk.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Hierna zetten we het feest verder met MNM Start To DJ winnaar
-                  TOLAG OG en Sven Van Alboom (gekend van Tomorrowland ,Sunrise
-                  Festival, Ostend Beach,…). Vervolgens zal het vertrouwde duo
-                  Sïmplex overnemen waarna Employerz Tobbedansen 2023 tot een
-                  mooi einde zal brengen.
+                  Hierna zetten we het feest verder met het dj duo{' '}
+                  <i>FRIENDZONE</i>
+                  (winnaar DJ Contest ‘the graduates’). Vervolgens zal Karakals
+                  ( gekend van MNM Start To DJ, Balaton Sound, Sunrise
+                  Festival,….) overnemen waarna onze eigen <i>Miles</i>
+                  <br></br>
+                  Tobbedansen 2024 tot een mooi einde zal brengen.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Schrijf 2 september 2023 dus in jullie agenda, wij kijken
+                  Schrijf 31 augustus 2024 dus in jullie agenda, wij kijken
                   alvast uit naar jullie originele constructies en het feestje
                   achteraf, jullie hopelijk ook.
                 </p>
