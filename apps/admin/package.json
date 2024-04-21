@@ -1,5 +1,5 @@
 {
-  "name": "site",
+  "name": "admin",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "next": "14.2.2",
-    "next-image-export-optimizer": "^1.12.3",
     "react": "^18",
     "react-dom": "^18"
   },
