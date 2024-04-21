@@ -14,9 +14,11 @@ generator client {
 }
 
 model Event {
-  id                      String   @id @default(uuid())
-  year                    Int      @db.Year
+  id                      String         @id @default(uuid())
+  year                    Int            @db.Year
   registration_start_date DateTime
+  vessel_types            VesselType[]
+  registrations           Registration[]
 }
 
 model Participant {
@@ -35,7 +37,7 @@ model Registrant {
   email          String
   date_of_birth  DateTime
   place_of_birth String
-  Registration   Registration[]
+  registration   Registration[]
 }
 
 model Registration {
@@ -47,13 +49,17 @@ model Registration {
   vessel        Vessel        @relation(fields: [vessel_id], references: [id])
   vessel_id     String
   assosciation  String
+  event         Event?        @relation(fields: [eventId], references: [id])
+  eventId       String?
 }
 
 model VesselType {
   id              String   @id @default(uuid())
   max_registrants Int      @default(2)
   type            String
-  Vessel          Vessel[]
+  vessel          Vessel[]
+  Event           Event?   @relation(fields: [eventId], references: [id])
+  eventId         String?
 }
 
 model Vessel {
@@ -61,5 +67,5 @@ model Vessel {
   name           String
   type           VesselType     @relation(fields: [vessel_type_id], references: [id])
   vessel_type_id String
-  Registration   Registration[]
+  registration   Registration[]
 }

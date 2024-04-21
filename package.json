@@ -17,6 +17,7 @@
     "manypkg:fix": "manypkg fix",
     "db:generate": "turbo run db:generate",
     "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed",
     "prisma:studio": "turbo run prisma:studio",
     "prisma:migrate-dev": "pnpm --filter database prisma:migrate-dev"
   },

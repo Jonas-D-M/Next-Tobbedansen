@@ -7,13 +7,19 @@
   "scripts": {
     "db:generate": "prisma generate",
     "db:push": "prisma db push --skip-generate",
+    "db:seed": "ts-node src/seed.ts",
     "prisma:migrate-dev": "prisma migrate dev",
     "prisma:studio": "prisma studio"
   },
   "devDependencies": {
-    "prisma": "^5.12.1"
+    "@types/node": "^20",
+    "prisma": "^5.12.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
   },
   "dependencies": {
-    "@prisma/client": "^5.12.1"
+    "@prisma/client": "^5.12.1",
+    "@types/luxon": "^3.4.2",
+    "luxon": "^3.4.4"
   }
 }
