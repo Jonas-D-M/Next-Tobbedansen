@@ -17,7 +17,8 @@
     "manypkg:fix": "manypkg fix",
     "db:generate": "turbo run db:generate",
     "db:push": "turbo run db:push",
-    "prisma:studio": "turbo run prisma:studio"
+    "prisma:studio": "turbo run prisma:studio",
+    "prisma:migrate-dev": "pnpm --filter database prisma:migrate-dev"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
