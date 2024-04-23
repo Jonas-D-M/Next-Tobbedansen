@@ -17,6 +17,7 @@
     "module": "commonjs",
     "target": "ES2021",
     "strict": true,
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
