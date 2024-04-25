@@ -6,6 +6,9 @@ export async function GET() {
     where: {
       year: DateTime.now().year,
     },
+    include: {
+      vessel_types: true,
+    },
   });
 
   return Response.json(currentEvent);

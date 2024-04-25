@@ -10,6 +10,6 @@ export const pages: PageType[] = [
   { title: 'FAQ', href: 'faq' },
   { title: 'Reglement', href: 'reglement' },
   // { title: 'Sponsors', href: 'sponsors' },
-  // { title: 'Inschrijvingen', href: 'inschrijvingen' },
+  { title: 'Inschrijvingen', href: 'inschrijvingen' },
   { title: 'Contact', href: 'contact' },
 ];

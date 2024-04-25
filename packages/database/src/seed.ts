@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon';
 
-import { Prisma } from './client';
+import { PrismaClient } from '../prisma/prisma-client';
+
+const Prisma = new PrismaClient();
 
 const today = DateTime.now();
 
@@ -21,26 +23,13 @@ const DEFAULT_VESSEL_TYPES = [
       data: {
         registration_start_date: today.set({ month: 5 }).toJSDate(),
         year: today.year,
+        vessel_types: {
+          create: DEFAULT_VESSEL_TYPES,
+        },
       },
     });
 
-    const existingVesselTypes = (
-      await Prisma.vesselType.findMany({
-        where: {
-          eventId: event.id,
-        },
-        select: {
-          type: true,
-        },
-      })
-    ).map(({ type }) => type);
-
-    for (const vesselType of DEFAULT_VESSEL_TYPES) {
-      if (existingVesselTypes.includes(vesselType.type)) continue;
-      await Prisma.vesselType.create({
-        data: vesselType,
-      });
-    }
+    console.info(`Vesseltypes generated for ${event.year}`);
   } catch (error) {
     console.error(error);
     process.exit(1);

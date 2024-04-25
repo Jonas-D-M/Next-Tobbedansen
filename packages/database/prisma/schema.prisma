@@ -26,12 +26,12 @@ model Event {
 }
 
 model Participant {
-  id              String        @id @default(uuid())
+  id              String       @id @default(uuid())
   first_name      String
   last_name       String
   date_of_birth   DateTime
-  registration    Registration? @relation(fields: [registration_id], references: [id])
-  registration_id String?
+  registration    Registration @relation(fields: [registration_id], references: [id])
+  registration_id String
 }
 
 model Registrant {
@@ -52,18 +52,17 @@ model Registration {
   participants  Participant[]
   vessel        Vessel        @relation(fields: [vessel_id], references: [id])
   vessel_id     String
-  assosciation  String
-  event         Event?        @relation(fields: [eventId], references: [id])
-  eventId       String?
+  assosciation  String?
+  event         Event         @relation(fields: [eventId], references: [id])
+  eventId       String
 }
 
 model VesselType {
   id              String   @id @default(uuid())
   max_registrants Int      @default(2)
   type            String
-  vessel          Vessel[]
-  Event           Event?   @relation(fields: [eventId], references: [id])
-  eventId         String?
+  vessels         Vessel[]
+  events          Event[]
 }
 
 model Vessel {
