@@ -51,13 +51,13 @@ model Registrant {
 model Registration {
   id            String        @id @default(uuid())
   music_request String?
-  registrant    Registrant    @relation(fields: [registrant_id], references: [id])
+  registrant    Registrant    @relation(fields: [registrant_id], references: [id], onDelete: Cascade)
   registrant_id String
   participants  Participant[]
-  vessel        Vessel        @relation(fields: [vessel_id], references: [id])
+  vessel        Vessel        @relation(fields: [vessel_id], references: [id], onDelete: Cascade)
   vessel_id     String
   assosciation  String?
-  event         Event         @relation(fields: [eventId], references: [id])
+  event         Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
   eventId       String
 }
 
