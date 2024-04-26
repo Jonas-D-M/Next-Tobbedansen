@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import prisma from '@/app/db';
 
+export const dynamic = 'force-dynamic'; // defaults to auto
 export async function GET() {
   const currentEvent = await prisma.event.findFirst({
     where: {
