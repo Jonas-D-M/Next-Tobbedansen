@@ -19,6 +19,8 @@ async function isEventAcceptingRegistrations(
 
 export async function POST(req: Request) {
   try {
+    const body = await req.json();
+
     const FullRegistrationSchema = z.object({
       music_request: z.string().optional().nullable(),
       assosciation: z.string().optional().nullable(),
@@ -28,6 +30,10 @@ export async function POST(req: Request) {
         email: z.string(),
         date_of_birth: z.coerce.date(),
         place_of_birth: z.string(),
+        postal_code: z.string(),
+        street_name: z.string(),
+        street_number: z.string(),
+        city: z.string(),
       }),
       participants: z.array(
         z.object({
@@ -38,14 +44,13 @@ export async function POST(req: Request) {
       ),
       vessel: z.object({
         name: z.string(),
-        type: z.string(),
         vessel_type_id: z.string(),
       }),
       event: z.string(),
     });
 
     const { registrant, participants, vessel, event, ...registration } =
-      FullRegistrationSchema.parse(req.body);
+      FullRegistrationSchema.parse(body);
 
     const allowRegistrations = await isEventAcceptingRegistrations(event);
 
@@ -84,10 +89,13 @@ export async function POST(req: Request) {
         ...registration,
       },
     });
+    return new Response('Bedankt voor uw inschrijving!', { status: 200 });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return new Response(error.issues.toString(), { status: 400 });
+      return new Response(JSON.stringify(error.issues), { status: 400 });
+      // return new Response(JSON.stringify(req.body), { status: 400 });
     }
+    console.log(error);
     return new Response(
       'Er ging iets mis, als dit blijft voorkomen stuur je ons best een berichtje.',
       { status: 500 }

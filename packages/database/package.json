@@ -1,5 +1,5 @@
 {
-  "name": "database",
+  "name": "@tobbedansen/db",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -11,7 +11,8 @@
     "db:push": "prisma db push --skip-generate",
     "db:seed": "ts-node src/seed.ts",
     "prisma:migrate-dev": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "compose:up": "docker compose -f 'docker-compose.yml' up -d --build"
   },
   "devDependencies": {
     "@types/node": "^20",

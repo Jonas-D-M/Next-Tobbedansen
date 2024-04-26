@@ -16,7 +16,7 @@ export const EventScalarFieldEnumSchema = z.enum(['id','year','registration_star
 
 export const ParticipantScalarFieldEnumSchema = z.enum(['id','first_name','last_name','date_of_birth','registration_id']);
 
-export const RegistrantScalarFieldEnumSchema = z.enum(['id','first_name','last_name','email','date_of_birth','place_of_birth']);
+export const RegistrantScalarFieldEnumSchema = z.enum(['id','first_name','last_name','email','date_of_birth','postal_code','street_name','street_number','city','place_of_birth']);
 
 export const RegistrationScalarFieldEnumSchema = z.enum(['id','music_request','registrant_id','vessel_id','assosciation','eventId']);
 
@@ -67,6 +67,10 @@ export const RegistrantSchema = z.object({
   last_name: z.string(),
   email: z.string(),
   date_of_birth: z.coerce.date(),
+  postal_code: z.string(),
+  street_name: z.string(),
+  street_number: z.string(),
+  city: z.string(),
   place_of_birth: z.string(),
 })
 
@@ -195,6 +199,10 @@ export const RegistrantSelectSchema: z.ZodType<Prisma.RegistrantSelect> = z.obje
   last_name: z.boolean().optional(),
   email: z.boolean().optional(),
   date_of_birth: z.boolean().optional(),
+  postal_code: z.boolean().optional(),
+  street_name: z.boolean().optional(),
+  street_number: z.boolean().optional(),
+  city: z.boolean().optional(),
   place_of_birth: z.boolean().optional(),
   registration: z.union([z.boolean(),z.lazy(() => RegistrationFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => RegistrantCountOutputTypeArgsSchema)]).optional(),
@@ -426,6 +434,10 @@ export const RegistrantWhereInputSchema: z.ZodType<Prisma.RegistrantWhereInput> 
   last_name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   email: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   date_of_birth: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  postal_code: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  street_name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  street_number: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  city: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   place_of_birth: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   registration: z.lazy(() => RegistrationListRelationFilterSchema).optional()
 }).strict();
@@ -436,6 +448,10 @@ export const RegistrantOrderByWithRelationInputSchema: z.ZodType<Prisma.Registra
   last_name: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   date_of_birth: z.lazy(() => SortOrderSchema).optional(),
+  postal_code: z.lazy(() => SortOrderSchema).optional(),
+  street_name: z.lazy(() => SortOrderSchema).optional(),
+  street_number: z.lazy(() => SortOrderSchema).optional(),
+  city: z.lazy(() => SortOrderSchema).optional(),
   place_of_birth: z.lazy(() => SortOrderSchema).optional(),
   registration: z.lazy(() => RegistrationOrderByRelationAggregateInputSchema).optional()
 }).strict();
@@ -452,6 +468,10 @@ export const RegistrantWhereUniqueInputSchema: z.ZodType<Prisma.RegistrantWhereU
   last_name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   email: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   date_of_birth: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  postal_code: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  street_name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  street_number: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  city: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   place_of_birth: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   registration: z.lazy(() => RegistrationListRelationFilterSchema).optional()
 }).strict());
@@ -462,6 +482,10 @@ export const RegistrantOrderByWithAggregationInputSchema: z.ZodType<Prisma.Regis
   last_name: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   date_of_birth: z.lazy(() => SortOrderSchema).optional(),
+  postal_code: z.lazy(() => SortOrderSchema).optional(),
+  street_name: z.lazy(() => SortOrderSchema).optional(),
+  street_number: z.lazy(() => SortOrderSchema).optional(),
+  city: z.lazy(() => SortOrderSchema).optional(),
   place_of_birth: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => RegistrantCountOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => RegistrantMaxOrderByAggregateInputSchema).optional(),
@@ -477,6 +501,10 @@ export const RegistrantScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Re
   last_name: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   email: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   date_of_birth: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
+  postal_code: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  street_name: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  street_number: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  city: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   place_of_birth: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
 }).strict();
 
@@ -767,6 +795,10 @@ export const RegistrantCreateInputSchema: z.ZodType<Prisma.RegistrantCreateInput
   last_name: z.string(),
   email: z.string(),
   date_of_birth: z.coerce.date(),
+  postal_code: z.string(),
+  street_name: z.string(),
+  street_number: z.string(),
+  city: z.string(),
   place_of_birth: z.string(),
   registration: z.lazy(() => RegistrationCreateNestedManyWithoutRegistrantInputSchema).optional()
 }).strict();
@@ -777,6 +809,10 @@ export const RegistrantUncheckedCreateInputSchema: z.ZodType<Prisma.RegistrantUn
   last_name: z.string(),
   email: z.string(),
   date_of_birth: z.coerce.date(),
+  postal_code: z.string(),
+  street_name: z.string(),
+  street_number: z.string(),
+  city: z.string(),
   place_of_birth: z.string(),
   registration: z.lazy(() => RegistrationUncheckedCreateNestedManyWithoutRegistrantInputSchema).optional()
 }).strict();
@@ -787,6 +823,10 @@ export const RegistrantUpdateInputSchema: z.ZodType<Prisma.RegistrantUpdateInput
   last_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   date_of_birth: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  postal_code: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_number: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  city: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   place_of_birth: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   registration: z.lazy(() => RegistrationUpdateManyWithoutRegistrantNestedInputSchema).optional()
 }).strict();
@@ -797,6 +837,10 @@ export const RegistrantUncheckedUpdateInputSchema: z.ZodType<Prisma.RegistrantUn
   last_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   date_of_birth: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  postal_code: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_number: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  city: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   place_of_birth: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   registration: z.lazy(() => RegistrationUncheckedUpdateManyWithoutRegistrantNestedInputSchema).optional()
 }).strict();
@@ -807,6 +851,10 @@ export const RegistrantCreateManyInputSchema: z.ZodType<Prisma.RegistrantCreateM
   last_name: z.string(),
   email: z.string(),
   date_of_birth: z.coerce.date(),
+  postal_code: z.string(),
+  street_name: z.string(),
+  street_number: z.string(),
+  city: z.string(),
   place_of_birth: z.string()
 }).strict();
 
@@ -816,6 +864,10 @@ export const RegistrantUpdateManyMutationInputSchema: z.ZodType<Prisma.Registran
   last_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   date_of_birth: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  postal_code: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_number: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  city: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   place_of_birth: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
@@ -825,6 +877,10 @@ export const RegistrantUncheckedUpdateManyInputSchema: z.ZodType<Prisma.Registra
   last_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   date_of_birth: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  postal_code: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_number: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  city: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   place_of_birth: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
@@ -1151,6 +1207,10 @@ export const RegistrantCountOrderByAggregateInputSchema: z.ZodType<Prisma.Regist
   last_name: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   date_of_birth: z.lazy(() => SortOrderSchema).optional(),
+  postal_code: z.lazy(() => SortOrderSchema).optional(),
+  street_name: z.lazy(() => SortOrderSchema).optional(),
+  street_number: z.lazy(() => SortOrderSchema).optional(),
+  city: z.lazy(() => SortOrderSchema).optional(),
   place_of_birth: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
@@ -1160,6 +1220,10 @@ export const RegistrantMaxOrderByAggregateInputSchema: z.ZodType<Prisma.Registra
   last_name: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   date_of_birth: z.lazy(() => SortOrderSchema).optional(),
+  postal_code: z.lazy(() => SortOrderSchema).optional(),
+  street_name: z.lazy(() => SortOrderSchema).optional(),
+  street_number: z.lazy(() => SortOrderSchema).optional(),
+  city: z.lazy(() => SortOrderSchema).optional(),
   place_of_birth: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
@@ -1169,6 +1233,10 @@ export const RegistrantMinOrderByAggregateInputSchema: z.ZodType<Prisma.Registra
   last_name: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   date_of_birth: z.lazy(() => SortOrderSchema).optional(),
+  postal_code: z.lazy(() => SortOrderSchema).optional(),
+  street_name: z.lazy(() => SortOrderSchema).optional(),
+  street_number: z.lazy(() => SortOrderSchema).optional(),
+  city: z.lazy(() => SortOrderSchema).optional(),
   place_of_birth: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
@@ -2043,6 +2111,10 @@ export const RegistrantCreateWithoutRegistrationInputSchema: z.ZodType<Prisma.Re
   last_name: z.string(),
   email: z.string(),
   date_of_birth: z.coerce.date(),
+  postal_code: z.string(),
+  street_name: z.string(),
+  street_number: z.string(),
+  city: z.string(),
   place_of_birth: z.string()
 }).strict();
 
@@ -2052,6 +2124,10 @@ export const RegistrantUncheckedCreateWithoutRegistrationInputSchema: z.ZodType<
   last_name: z.string(),
   email: z.string(),
   date_of_birth: z.coerce.date(),
+  postal_code: z.string(),
+  street_name: z.string(),
+  street_number: z.string(),
+  city: z.string(),
   place_of_birth: z.string()
 }).strict();
 
@@ -2137,6 +2213,10 @@ export const RegistrantUpdateWithoutRegistrationInputSchema: z.ZodType<Prisma.Re
   last_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   date_of_birth: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  postal_code: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_number: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  city: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   place_of_birth: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
@@ -2146,6 +2226,10 @@ export const RegistrantUncheckedUpdateWithoutRegistrationInputSchema: z.ZodType<
   last_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   date_of_birth: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  postal_code: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  street_number: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  city: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   place_of_birth: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 

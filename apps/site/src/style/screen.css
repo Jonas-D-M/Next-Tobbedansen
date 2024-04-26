@@ -40,7 +40,7 @@ form {
   width: 100%;
 }
 
-button {
+/* button {
   font-family: var(--font-roboto);
   margin-top: 32px;
   margin-bottom: 32px;
@@ -57,7 +57,7 @@ button {
   padding-left: 16px;
   padding-right: 16px;
   color: white;
-}
+} */
 
 .prijzen {
   list-style: disc !important;

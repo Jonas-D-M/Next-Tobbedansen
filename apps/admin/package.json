@@ -23,11 +23,11 @@
     "zod": "^3.23.4"
   },
   "devDependencies": {
+    "@tobbedansen/db": "workspace:*",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "database": "workspace:*",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
     "typescript": "^5"

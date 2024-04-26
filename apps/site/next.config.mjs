@@ -15,7 +15,7 @@ const nextConfig = {
   transpilePackages: ['next-image-export-optimizer'],
   reactStrictMode: true,
   compiler: {
-    removeConsole: true,
+    removeConsole: false,
   },
   env: {
     nextImageExportOptimizer_imageFolderPath: 'public/images',

@@ -1,9 +1,2 @@
-import React, { InputHTMLAttributes } from 'react';
-
-interface TextinputProps extends InputHTMLAttributes<HTMLInputElement> {}
-
-const TextInput = ({ className, ...props }: TextinputProps) => {
-  return <input className='textbox-300' {...props} />;
-};
-
-export default TextInput;
+export { TextInput } from '@/components/inputs/text-input';
+export { DatePicker } from '@/components/inputs/date-picker';

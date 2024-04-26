@@ -19,7 +19,7 @@
     "db:push": "turbo run db:push",
     "db:seed": "turbo run db:seed",
     "prisma:studio": "turbo run prisma:studio",
-    "prisma:migrate-dev": "pnpm --filter database prisma:migrate-dev"
+    "prisma:migrate-dev": "pnpm --filter @tobbedansen/db prisma:migrate-dev"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",

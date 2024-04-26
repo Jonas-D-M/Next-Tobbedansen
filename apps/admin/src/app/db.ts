@@ -1,4 +1,4 @@
-import { PrismaClient } from 'database';
+import { PrismaClient } from '@tobbedansen/db';
 
 const prismaClientSingleton = () => {
   return new PrismaClient();
