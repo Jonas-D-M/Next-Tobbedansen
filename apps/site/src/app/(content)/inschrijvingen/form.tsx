@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, MouseEvent } from 'react';
+import React from 'react';
 import useSWR from 'swr';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -7,7 +7,6 @@ import { useFieldArray, useForm, useWatch } from 'react-hook-form';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,16 +14,8 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { Calendar } from '@/components/ui/calendar';
-import { CalendarIcon, X, LoaderCircle } from 'lucide-react';
-import { format } from 'date-fns';
+import { X } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
@@ -129,14 +120,17 @@ export const FormWrapper = ({ currentEvent }: FormWrapperProps) => {
     // ✅ This will be type-safe and validated.
     console.log(values);
     const { read_the_rules, ...data } = values;
-    await fetch('http://localhost:3001/api/registration', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    await fetch(
+      'https://next-tobbedansen-admin-nfw7l7gzg-jonasdms-projects.vercel.app/api/registration',
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+    );
   }
 
   function addParticipant() {
