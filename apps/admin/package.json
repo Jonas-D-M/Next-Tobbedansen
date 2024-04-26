@@ -23,6 +23,7 @@
     "zod": "^3.23.4"
   },
   "devDependencies": {
+    "@prisma/nextjs-monorepo-workaround-plugin": "^5.13.0",
     "@tobbedansen/db": "workspace:*",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20",

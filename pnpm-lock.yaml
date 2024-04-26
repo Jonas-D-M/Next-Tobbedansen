@@ -60,6 +60,9 @@ importers:
         specifier: ^3.23.4
         version: 3.23.4
     devDependencies:
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^5.13.0
+        version: 5.13.0
       '@tobbedansen/db':
         specifier: workspace:*
         version: link:../../packages/database
@@ -1113,6 +1116,10 @@ packages:
     resolution: {integrity: sha512-pgIR+pSvhYHiUcqXVEZS31NrFOTENC9yFUdEAcx7cdQBoZPmHVjtjN4Ss6NzVDMYPrKJJ51U14EhEoeuBlMioQ==}
     dependencies:
       '@prisma/debug': 5.12.1
+
+  /@prisma/nextjs-monorepo-workaround-plugin@5.13.0:
+    resolution: {integrity: sha512-KcrUjPotWYanktn7t97NwzeMHRsRT9P452EVO802J+yvCm9yKx6xtFzfUlD3NFOsUToAMytIE+t9Ct7/7bDnsg==}
+    dev: true
 
   /@radix-ui/number@1.0.1:
     resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==}
