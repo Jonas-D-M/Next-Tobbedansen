@@ -2,6 +2,7 @@ import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: '/dist',
   reactStrictMode: true,
   compiler: {
     removeConsole: true,

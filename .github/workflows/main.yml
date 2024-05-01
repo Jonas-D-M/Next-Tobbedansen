@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [master, main]
+    branches: [master, main, test]
 name: 🚀 Deploy website on push to master
 jobs:
   web-deploy:
@@ -21,14 +21,54 @@ jobs:
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
-      - name: Create static export
+      - name: Create build
         run: pnpm run build --filter=site
 
-      - name: 📂 Sync files
+      - name: 📂 Sync server files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_HOSTNAME }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./apps/site/out/
+          state-name: .ftp-deploy-sync-state.json
+          local-dir: ./apps/site/dist/standalone/apps/site
           dry-run: false
+
+      - name: 📂 Sync public files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOSTNAME }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          state-name: .ftp-public-sync-state.json
+          local-dir: ./apps/site/public
+          dry-run: false
+
+      - name: 📂 Sync public files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOSTNAME }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          state-name: .ftp-static-sync-state.json
+          local-dir: ./apps/site/dist/static
+          server-dir: ./dist/static
+          dry-run: false
+
+      - name: Create file to restart server
+        shell: bash
+        run: touch ./tmp/restart.txt
+
+      - name: Restart server
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOSTNAME }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          state-name: .ftp-restart-sync-state.json
+          local-dir: ./tmp
+          server-dir: ./tmp
+          dry-run: false
+          dangerous-clean-slate: true
+
+      # When dependencies have changed, manual install is needed...
