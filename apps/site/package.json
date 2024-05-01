@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
-    "start": "next start",
+    "start": "pnpm dlx serve@latest out",
+    "type-check": "tsc --noEmit",
     "lint": "next lint"
   },
   "dependencies": {
