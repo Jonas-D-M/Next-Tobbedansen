@@ -6,65 +6,6 @@ export const metadata: Metadata = {
   title: `Tobbedansen ${new Date().getFullYear()} - Inschrijvingen`,
 };
 
-const formItems = [
-  {
-    type: 'text',
-    name: 'entry.1590447953',
-    placeholder: 'Voornaam',
-    required: true,
-  },
-  {
-    type: 'text',
-    name: 'entry.609469685',
-    placeholder: 'Naam',
-    required: true,
-  },
-  {
-    type: 'email',
-    name: 'entry.1256978498',
-    placeholder: 'E-mail',
-    required: true,
-  },
-  {
-    type: 'text',
-    name: 'entry.1052038244',
-    placeholder: 'Gemeente',
-    required: true,
-  },
-  {
-    type: 'number',
-    name: 'entry.1647528450',
-    placeholder: 'Postcode',
-    required: true,
-  },
-  {
-    type: 'text',
-    name: 'entry.1364363486',
-    placeholder: 'Straat & nr',
-    required: true,
-  },
-  {
-    type: 'number',
-    name: 'entry.1319474406',
-    placeholder: 'Telefoonnummer',
-    maxLength: 10,
-    required: true,
-  },
-  {
-    type: 'date',
-    name: 'entry.438875400',
-    placeholder: 'Geboortedatum',
-    required: true,
-    readOnly: true,
-  },
-  {
-    type: 'text',
-    name: 'entry.1621228601',
-    placeholder: 'Geboorteplaats',
-    required: true,
-  },
-];
-
 const Page = () => {
   return (
     <>
