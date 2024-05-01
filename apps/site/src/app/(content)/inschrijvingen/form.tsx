@@ -23,6 +23,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import Link from 'next/link';
 import { endpoints } from '@/utils/constants';
+import { useRouter } from 'next/navigation';
 
 interface VesselTypes {
   id: string;
@@ -41,6 +42,8 @@ interface FormWrapperProps {
 }
 
 export const FormWrapper = ({ currentEvent }: FormWrapperProps) => {
+  const router = useRouter();
+
   const formSchema = z.object({
     read_the_rules: z.boolean(),
     music_request: z.string().optional(),
@@ -118,18 +121,23 @@ export const FormWrapper = ({ currentEvent }: FormWrapperProps) => {
   }
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    const { read_the_rules, ...data } = values;
-    await fetch(endpoints.registration.post, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      // Do something with the form values.
+      // ✅ This will be type-safe and validated.
+      console.log(values);
+      const { read_the_rules, ...data } = values;
+      await fetch(endpoints.registration.post, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      router.push('/thank-you');
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   function addParticipant() {
@@ -167,8 +175,6 @@ export const FormWrapper = ({ currentEvent }: FormWrapperProps) => {
     );
     remove(index);
   }
-
-  console.log(form);
 
   return (
     <Form control={control} {...form}>
