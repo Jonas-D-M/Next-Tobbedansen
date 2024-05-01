@@ -1,5 +1,10 @@
-/** @type {import('next').NextConfig} */
+import { fileURLToPath } from 'node:url';
+import createJiti from 'jiti';
+const jiti = createJiti(fileURLToPath(import.meta.url));
 
+jiti('./src/env');
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
   // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`

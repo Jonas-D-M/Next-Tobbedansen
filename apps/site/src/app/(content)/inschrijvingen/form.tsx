@@ -1,4 +1,5 @@
 'use client';
+
 import React from 'react';
 import useSWR from 'swr';
 import { z } from 'zod';
@@ -21,6 +22,7 @@ import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import Link from 'next/link';
+import { endpoints } from '@/utils/constants';
 
 interface VesselTypes {
   id: string;
@@ -120,17 +122,14 @@ export const FormWrapper = ({ currentEvent }: FormWrapperProps) => {
     // ✅ This will be type-safe and validated.
     console.log(values);
     const { read_the_rules, ...data } = values;
-    await fetch(
-      'https://next-tobbedansen-admin-nfw7l7gzg-jonasdms-projects.vercel.app/api/registration',
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    await fetch(endpoints.registration.post, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
   }
 
   function addParticipant() {
@@ -485,7 +484,7 @@ export const FormWrapper = ({ currentEvent }: FormWrapperProps) => {
 
 export const RegistrationForm = () => {
   const { data, isLoading } = useSWR<CurrentEvent>(
-    'http://localhost:3001/api/event/current',
+    endpoints.event.get.current,
     (arg: string) => fetch(arg).then((res) => res.json())
   );
   const today = DateTime.now();

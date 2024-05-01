@@ -7,7 +7,7 @@
     },
     "type-check": {},
     "dev": {
-      "dependsOn": ["^db:generate", "^compose:up"],
+      "dependsOn": ["^compose:up", "^db:generate"],
       "cache": false,
       "persistent": true
     },
