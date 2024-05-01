@@ -3,6 +3,28 @@ on:
     branches: [master, main, test]
 name: 🚀 Deploy website on push to master
 jobs:
+  restart-server:
+    name: Restart Node server
+    runs-on: ubuntu-latest
+    needs: [upload-static-assets, web-deploy]
+    steps:
+      - name: Create file to restart server
+        shell: bash
+        run: | 
+          mkdir ./tmp
+          echo '' > ./tmp/restart.txt
+
+      - name: 📂 Sync public files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOSTNAME }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./tmp/
+          server-dir: ./tmp/
+          state-name: ./sync-restarted.json
+          dry-run: false
+        
   upload-static-assets:
     name: Upload static assets
     runs-on: ubuntu:-latest
@@ -55,9 +77,7 @@ jobs:
           local-dir: ./apps/site/dist/standalone/apps/site/
           dry-run: false
 
-      - name: Create file to restart server
-        shell: bash
-        run: touch ./tmp/restart.txt
+     
 
 
       # When dependencies have changed, manual install is needed...
