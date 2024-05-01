@@ -43,7 +43,8 @@ jobs:
       - name: Move static files
         shell: bash
         run: |
-          mv ./apps/site/dist/static/* ./apps/site/dist/standalone/apps/site/
+          mkdir ./apps/site/dist/standalone/apps/site/static/
+          mv ./apps/site/dist/static/* ./apps/site/dist/standalone/apps/site/static/
 
       - name: 📂 Sync server files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
