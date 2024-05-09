@@ -17,11 +17,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+          cache: "pnpm"
 
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
       - name: Create static export
+        env:
+          NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
         run: pnpm run build --filter=site...
 
       - name: 📂 Sync files
