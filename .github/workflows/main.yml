@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [master, main]
+    branches: [master, main, dev]
 name: 🚀 Deploy website on push to master
 jobs:
   web-deploy:
@@ -22,7 +22,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Create static export
-        run: pnpm run build --filter=site
+        run: pnpm run build --filter=site...
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
