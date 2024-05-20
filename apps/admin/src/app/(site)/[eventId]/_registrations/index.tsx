@@ -1,6 +1,7 @@
 import prisma from '@/app/(api)/db';
 import { RegistrationColumns, columns } from './columns';
 import { DataTable } from './data-table';
+import { Button } from '@/components/ui/button';
 
 const getRegistrations = async (
   eventId: string
@@ -29,7 +30,6 @@ const getRegistrations = async (
   });
   return event.registrations.map((registration) => ({
     id: registration.id,
-    hasPayed: registration.has_payed,
     vesselName: registration.vessel.name,
     vesselType: registration.vessel.type.type,
     registrantName: registration.registrant.full_name,
@@ -43,7 +43,11 @@ interface RegistrationTableProps {
 
 const RegistrationTable = async ({ eventId }: RegistrationTableProps) => {
   const registrations = await getRegistrations(eventId);
-  return <DataTable columns={columns} data={registrations} />;
+  return (
+    <>
+      <DataTable columns={columns} data={registrations} />
+    </>
+  );
 };
 
 export { RegistrationTable };

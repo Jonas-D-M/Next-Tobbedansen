@@ -1,4 +1,5 @@
 import prisma from '@/app/(api)/db';
+import { H1 } from '@/components/typography';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -27,7 +28,7 @@ const Layout = async ({ params: { eventId }, children }: LayoutProps) => {
   }
 
   return (
-    <div className='container'>
+    <div className='container flex flex-col grow'>
       <Breadcrumb className='mb-2'>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -39,7 +40,10 @@ const Layout = async ({ params: { eventId }, children }: LayoutProps) => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <section>{children}</section>
+      <section className='flex flex-col grow'>
+        <H1 className='mb-2'>Inschrijvingen {event.year}</H1>
+        {children}
+      </section>
     </div>
   );
 };

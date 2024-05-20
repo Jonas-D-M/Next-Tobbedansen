@@ -3,7 +3,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { ColumnDef } from '@tanstack/react-table';
 
 export interface RegistrationColumns {
-  hasPayed: boolean;
   vesselName: string;
   vesselType: string;
   registrantName: string;
@@ -11,11 +10,19 @@ export interface RegistrationColumns {
   id: string;
 }
 
+const setRegistrationPayed = async (id: string, hasPayed: boolean) => {
+  await fetch(`/api/registrations/${id}/payed`, {
+    method: 'PATCH',
+    body: JSON.stringify({ has_payed: hasPayed }),
+  });
+};
+
 export const columns: ColumnDef<RegistrationColumns>[] = [
   {
     id: 'select',
     header: ({ table }) => (
       <Checkbox
+        name='select-all'
         checked={
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && 'indeterminate')
@@ -26,6 +33,7 @@ export const columns: ColumnDef<RegistrationColumns>[] = [
     ),
     cell: ({ row }) => (
       <Checkbox
+        name='select-row'
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label='Select row'
@@ -46,13 +54,6 @@ export const columns: ColumnDef<RegistrationColumns>[] = [
   {
     accessorKey: 'registrantName',
     header: 'Naam',
-  },
-  {
-    accessorKey: 'hasPayed',
-    header: 'Betaald',
-    cell: ({ row }) => (
-      <Checkbox checked={row.getValue('hasPayed')} aria-label='Betaald' />
-    ),
   },
   {
     accessorKey: 'email',

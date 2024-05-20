@@ -1,4 +1,4 @@
-import prisma from '@/app/db';
+import prisma from '@/app/(api)/db';
 import { z } from 'zod';
 
 async function isEventAcceptingRegistrations(

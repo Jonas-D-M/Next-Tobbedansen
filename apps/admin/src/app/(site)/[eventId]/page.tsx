@@ -14,21 +14,18 @@ interface PageProps {
 
 const Page = async ({ params: { eventId } }: PageProps) => {
   return (
-    <div>
-      <H1 className='mb-2'>Inschrijvingen</H1>
-      <Tabs defaultValue='registrations'>
-        <TabsList>
-          <TabsTrigger value='registrations'>Registraties</TabsTrigger>
-          <TabsTrigger value='participants'>Deelnemers</TabsTrigger>
-        </TabsList>
-        <TabsContent value='registrations'>
-          <RegistrationTable eventId={eventId} />
-        </TabsContent>
-        <TabsContent value='participants'>
-          <ParticipantTable eventId={eventId} />
-        </TabsContent>
-      </Tabs>
-    </div>
+    <Tabs defaultValue='registrations'>
+      <TabsList>
+        <TabsTrigger value='registrations'>Registraties</TabsTrigger>
+        <TabsTrigger value='participants'>Deelnemers</TabsTrigger>
+      </TabsList>
+      <TabsContent value='registrations'>
+        <RegistrationTable eventId={eventId} />
+      </TabsContent>
+      <TabsContent value='participants'>
+        <ParticipantTable eventId={eventId} />
+      </TabsContent>
+    </Tabs>
   );
 };
 
