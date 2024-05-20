@@ -41,6 +41,9 @@ importers:
       '@fortawesome/react-fontawesome':
         specifier: ^0.2.0
         version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.2.0)
+      '@radix-ui/react-slot':
+        specifier: ^1.0.2
+        version: 1.0.2(@types/react@18.2.79)(react@18.2.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.4)
