@@ -1,62 +1,113 @@
 import { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-const H1 = ({ children }: PropsWithChildren) => {
+interface BaseTypographyProps extends PropsWithChildren {
+  className?: string;
+}
+
+const H1 = ({ children, className }: BaseTypographyProps) => {
   return (
-    <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
+    <h1
+      className={twMerge(
+        'scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl',
+        className
+      )}>
       {children}
     </h1>
   );
 };
-const H2 = ({ children }: PropsWithChildren) => {
+const H2 = ({ children, className }: BaseTypographyProps) => {
   return (
-    <h2 className='scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0'>
+    <h2
+      className={twMerge(
+        'scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0',
+        className
+      )}>
       {children}
     </h2>
   );
 };
-const H3 = ({ children }: PropsWithChildren) => {
+const H3 = ({ children, className }: BaseTypographyProps) => {
   return (
-    <h3 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
+    <h3
+      className={twMerge(
+        'scroll-m-20 text-2xl font-semibold tracking-tight',
+        className
+      )}>
       {children}
     </h3>
   );
 };
-const H4 = ({ children }: PropsWithChildren) => {
+const H4 = ({ children, className }: BaseTypographyProps) => {
   return (
-    <h4 className='scroll-m-20 text-xl font-semibold tracking-tight'>
+    <h4
+      className={twMerge(
+        'scroll-m-20 text-xl font-semibold tracking-tight',
+        className
+      )}>
       {children}
     </h4>
   );
 };
-const P = ({ children }: PropsWithChildren) => {
-  return <p className='leading-7 [&:not(:first-child)]:mt-6'>{children}</p>;
-};
-const Blockquote = ({ children }: PropsWithChildren) => {
+const P = ({ children, className }: BaseTypographyProps) => {
   return (
-    <blockquote className='mt-6 border-l-2 pl-6 italic'>{children}</blockquote>
+    <p className={twMerge('leading-7 [&:not(:first-child)]:mt-6', className)}>
+      {children}
+    </p>
   );
 };
-const Ul = ({ children }: PropsWithChildren) => {
-  return <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>{children}</ul>;
-};
-const Code = ({ children }: PropsWithChildren) => {
+const Blockquote = ({ children, className }: BaseTypographyProps) => {
   return (
-    <code className='relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold'>
+    <blockquote className={twMerge('mt-6 border-l-2 pl-6 italic', className)}>
+      {children}
+    </blockquote>
+  );
+};
+const Ul = ({ children, className }: BaseTypographyProps) => {
+  return (
+    <ul className={twMerge('my-6 ml-6 list-disc [&>li]:mt-2', className)}>
+      {children}
+    </ul>
+  );
+};
+const Code = ({ children, className }: BaseTypographyProps) => {
+  return (
+    <code
+      className={twMerge(
+        'relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
+        className
+      )}>
       {children}
     </code>
   );
 };
-const Lead = ({ children }: PropsWithChildren) => {
-  return <p className='text-xl text-muted-foreground'>{children}</p>;
+const Lead = ({ children, className }: BaseTypographyProps) => {
+  return (
+    <p className={twMerge('text-xl text-muted-foreground', className)}>
+      {children}
+    </p>
+  );
 };
-const Large = ({ children }: PropsWithChildren) => {
-  return <div className='text-lg font-semibold'>{children}</div>;
+const Large = ({ children, className }: BaseTypographyProps) => {
+  return (
+    <div className={twMerge('text-lg font-semibold', className)}>
+      {children}
+    </div>
+  );
 };
-const Small = ({ children }: PropsWithChildren) => {
-  return <small className='text-sm font-medium leading-none'>{children}</small>;
+const Small = ({ children, className }: BaseTypographyProps) => {
+  return (
+    <small className={twMerge('text-sm font-medium leading-none', className)}>
+      {children}
+    </small>
+  );
 };
-const Muted = ({ children }: PropsWithChildren) => {
-  return <p className='text-sm text-muted-foreground'>{children}</p>;
+const Muted = ({ children, className }: BaseTypographyProps) => {
+  return (
+    <p className={twMerge('text-sm text-muted-foreground', className)}>
+      {children}
+    </p>
+  );
 };
 
 export { H1, H2, H3, H4, Blockquote, Code, Large, Lead, Muted, P, Small, Ul };

@@ -1,68 +1,90 @@
 import React from 'react';
 import prisma from '../(api)/db';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { DateTime } from 'luxon';
+
+import { DateTime, Interval } from 'luxon';
 import { H1, H2, Small, Ul } from '@/components/typography';
-import Link from 'next/link';
+import { Card } from '@/components/event';
+import { Car } from 'lucide-react';
+
+type GroupedEvents = Record<
+  'current' | 'past',
+  {
+    year: number;
+    id: string;
+    registration_start_date: Date;
+    registration_end_date: Date;
+  }[]
+>;
 
 const getEvents = async () => {
   const events = await prisma.event.findMany({
-    include: {
-      vessel_types: true,
+    select: {
+      year: true,
+      id: true,
+      registration_end_date: true,
+      registration_start_date: true,
     },
     orderBy: {
       year: 'desc',
     },
   });
-  return events;
-};
 
-const formatDate = (date: Date) => {
-  return DateTime.fromJSDate(date).toFormat('dd-MM-yyyy HH:mm');
+  const currentDate = DateTime.now();
+
+  const groupedEvents = events.reduce<GroupedEvents>(
+    (groups, event) => {
+      const { registration_start_date, registration_end_date } = event;
+      const interval = Interval.fromDateTimes(
+        registration_start_date,
+        registration_end_date
+      );
+
+      if (interval.contains(currentDate)) {
+        groups.current.push(event);
+      } else {
+        groups.past.push(event);
+      }
+
+      return groups;
+    },
+    { current: [], past: [] }
+  );
+
+  return groupedEvents;
 };
 
 const Page = async () => {
   const events = await getEvents();
-  const multipliedEvents = [
-    ...events,
-    ...events,
-    ...events,
-    ...events,
-    ...events,
-  ];
+
   return (
     <section className='container'>
       <H1>Evenementen</H1>
-      <div className='flex flex-wrap gap-4 justify-center md:justify-between mt-2'>
-        {multipliedEvents.map(
-          ({ year, id, vessel_types, registration_start_date }) => {
+      <div className='flex flex-wrap gap-4 justify-center mt-2'>
+        {events.current.map(
+          ({ year, id, registration_start_date, registration_end_date }) => {
             return (
-              <Link key={id} href={`/${id}`}>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{year}</CardTitle>
-                    <CardDescription>
-                      {`${formatDate(registration_start_date)} - ${formatDate(registration_start_date)}`}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <H2>Vaartuigtypes</H2>
-                    <Ul>
-                      {vessel_types.map(({ type, id }) => (
-                        <li key={id} className='capitalize'>
-                          {type.toLowerCase()}
-                        </li>
-                      ))}
-                    </Ul>
-                  </CardContent>
-                </Card>
-              </Link>
+              <Card
+                key={id}
+                title={year.toString()}
+                start={registration_start_date}
+                end={registration_end_date}
+                id={id}
+              />
+            );
+          }
+        )}
+      </div>
+      <div className='flex flex-wrap gap-4 justify-center md:justify-between mt-2'>
+        {events.past.map(
+          ({ year, id, registration_start_date, registration_end_date }) => {
+            return (
+              <Card
+                key={id}
+                title={year.toString()}
+                start={registration_start_date}
+                end={registration_end_date}
+                id={id}
+              />
             );
           }
         )}

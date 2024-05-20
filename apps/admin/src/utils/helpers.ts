@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon';
+
 export const getStartingDate = (): Date => {
   const year: number = new Date().getFullYear();
   const month: number = 8; // september
@@ -32,4 +34,11 @@ export const getEventWeekend = (): EventWeekend => {
     saturday,
   };
   return eventDate;
+};
+
+export const formatDate = (date = new Date(), showTime = false) => {
+  if (!showTime) {
+    return DateTime.fromJSDate(date).toFormat('dd-MM-yyyy');
+  }
+  return DateTime.fromJSDate(date).toFormat('dd-MM-yyyy HH:mm');
 };
