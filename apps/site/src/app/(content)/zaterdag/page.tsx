@@ -60,14 +60,14 @@ const Page = () => {
                 <p className='c-lead c-lead--text'>Bovenaanzicht:</p>
                 <img
                   className='u-mb-lg'
-                  src='img/parcour-1.jpg'
+                  src='/img/parcour-1.jpg'
                   alt='parcour'
                 />
                 <br />
                 <p className='c-lead c-lead--text'>Zijaanzicht:</p>
                 <img
                   className='u-mb-lg'
-                  src='img/parcour-2.jpg'
+                  src='/img/parcour-2.jpg'
                   alt='parcour'
                 />
                 {/* <div className='iframeWrapper u-mb-lg'>
