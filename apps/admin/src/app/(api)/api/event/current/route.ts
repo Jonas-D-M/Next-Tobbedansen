@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import prisma from '@/app/db';
+import prisma from '@/app/(api)/db';
 
 export async function GET() {
   const currentEvent = await prisma.event.findFirst({

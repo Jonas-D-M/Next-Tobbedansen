@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    MYSQL_ROOT_PASSWORD: z.string(),
+    MYSQL_ROOT_PASSWORD: z.string().optional(),
     MYSQL_DATABASE: z.string(),
     MYSQL_USER: z.string(),
     MYSQL_PASSWORD: z.string(),
