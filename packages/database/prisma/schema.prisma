@@ -83,3 +83,17 @@ model Vessel {
   vessel_type_id String
   registration   Registration[]
 }
+
+model User {
+  id            String    @id
+  session       Session[]
+  email         String    @unique
+  password_hash String
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
