@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon';
 import { fakerNL_BE as faker } from '@faker-js/faker';
 import { Prisma as PrismaLib, PrismaClient } from '../prisma/prisma-client';
+import { hash } from '@node-rs/argon2';
+import { generateIdFromEntropySize } from 'lucia';
 
 const Prisma = new PrismaClient();
 
@@ -63,10 +65,11 @@ const generateRegistrants = (): RegistrantCreateBody => {
   };
 };
 
+export const createAdminUser = async (email: string, password: string) => {};
+
 (async () => {
   try {
     console.log('--------- SEEDING ---------');
-
     console.log(`Seeding event...`);
     const event = await Prisma.event.create({
       data: {

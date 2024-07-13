@@ -8,7 +8,10 @@ jiti('./src/env');
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
-    removeConsole: true,
+    removeConsole: false,
+  },
+  experimental: {
+    serverComponentsExternalPackages: ['@node-rs/argon2'],
   },
   async headers() {
     return [
