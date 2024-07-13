@@ -11,6 +11,7 @@
     "db:push": "prisma db push --skip-generate",
     "db:seed": "ts-node src/seed.ts",
     "prisma:migrate-dev": "prisma migrate dev",
+    "prisma:migrate-deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
     "compose:up": "docker compose -f 'docker-compose.yml' up -d --build"
   },
