@@ -1,6 +1,7 @@
 on:
   push:
-    branches: [master, main]
+    branches: [master, main, dev]
+  workflow_dispatch:
 name: 🚀 Deploy website on push to master
 jobs:
   web-deploy:
@@ -17,12 +18,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+          cache: "pnpm"
 
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
       - name: Create static export
-        run: pnpm run build --filter=site
+        env:
+          NEXT_PUBLIC_BACKEND_URL: ${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
+        run: pnpm run build --filter=site...
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0

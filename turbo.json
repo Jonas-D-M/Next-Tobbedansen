@@ -1,13 +1,16 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
+    "start": {
+      "dependsOn": ["^build"]
+    },
     "build": {
       "dependsOn": ["^db:generate"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "type-check": {},
     "dev": {
-      "dependsOn": ["^db:generate", "^compose:up"],
+      "dependsOn": ["^compose:up", "^db:generate"],
       "cache": false,
       "persistent": true
     },
@@ -26,6 +29,9 @@
     },
     "compose:up": {
       "cache": false
+    },
+    "lint": {
+      "dependsOn": ["^type-check"]
     }
   }
 }

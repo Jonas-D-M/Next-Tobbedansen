@@ -1,12 +1,17 @@
-/** @type {import('next').NextConfig} */
+import { fileURLToPath } from 'node:url';
+import createJiti from 'jiti';
+const jiti = createJiti(fileURLToPath(import.meta.url));
 
+jiti('./src/env');
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
   // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
-  // trailingSlash: true,
+  trailingSlash: true,
 
   // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
-  // skipTrailingSlashRedirect: true,
+  skipTrailingSlashRedirect: true,
   images: {
     loader: 'custom',
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

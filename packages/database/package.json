@@ -11,18 +11,22 @@
     "db:push": "prisma db push --skip-generate",
     "db:seed": "ts-node src/seed.ts",
     "prisma:migrate-dev": "prisma migrate dev",
+    "prisma:migrate-deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
     "compose:up": "docker compose -f 'docker-compose.yml' up -d --build"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/node": "^20",
     "prisma": "^5.12.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "dependencies": {
+    "@node-rs/argon2": "^1.8.3",
     "@prisma/client": "^5.12.1",
     "@types/luxon": "^3.4.2",
+    "lucia": "^3.2.0",
     "luxon": "^3.4.4",
     "zod": "^3.23.4",
     "zod-prisma-types": "^3.1.6"

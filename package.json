@@ -19,7 +19,8 @@
     "db:push": "turbo run db:push",
     "db:seed": "turbo run db:seed",
     "prisma:studio": "turbo run prisma:studio",
-    "prisma:migrate-dev": "pnpm --filter @tobbedansen/db prisma:migrate-dev"
+    "prisma:migrate-dev": "pnpm --filter @tobbedansen/db prisma:migrate-dev",
+    "prisma:migrate-deploy": "pnpm --filter @tobbedansen/db prisma:migrate-deploy"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
@@ -27,7 +28,7 @@
     "prettier": "3.2.5",
     "turbo": "^1.13.2"
   },
-  "packageManager": "pnpm@8.15.2",
+  "packageManager": "pnpm@9.1.2",
   "engines": {
     "node": ">=20"
   }
