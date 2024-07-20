@@ -1,8 +1,5 @@
-import prisma from '@/app/(api)/db';
-import { H1 } from '@/components/typography';
 import React from 'react';
 import { RegistrationTable } from './_registrations';
-import { RegistrationColumns, columns } from './_registrations/columns';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ParticipantTable } from './_participants';
 

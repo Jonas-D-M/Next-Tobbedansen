@@ -1,7 +1,6 @@
 import prisma from '@/app/(api)/db';
 import { ParticipantColumns, columns } from './columns';
 import { DataTable } from './data-table';
-import { DateTime } from 'luxon';
 import { formatDate } from '@/utils/helpers';
 
 const getParticipants = async (
@@ -15,6 +14,11 @@ const getParticipants = async (
       registrations: {
         select: {
           id: true,
+          vessel: {
+            select: {
+              name: true,
+            },
+          },
           registrant: {
             select: {
               full_name: true,
@@ -38,6 +42,7 @@ const getParticipants = async (
     .map((registration) => {
       const registrant = {
         id: registration.id,
+        vesselName: registration.vessel.name,
         name: registration.registrant.full_name,
         dateOfBirth: formatDate(registration.registrant.date_of_birth),
         address: registration.registrant.address,
@@ -48,6 +53,7 @@ const getParticipants = async (
       const participants = registration.participants.map((participant) => ({
         id: registration.id,
         name: participant.full_name,
+        vesselName: registration.vessel.name,
         dateOfBirth: formatDate(participant.date_of_birth),
         address: undefined,
         email: undefined,

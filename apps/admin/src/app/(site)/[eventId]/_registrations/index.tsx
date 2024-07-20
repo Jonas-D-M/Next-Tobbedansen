@@ -2,6 +2,7 @@ import prisma from '@/app/(api)/db';
 import { RegistrationColumns, columns } from './columns';
 import { DataTable } from './data-table';
 import { Button } from '@/components/ui/button';
+import { deleteRegistrations } from '@/actions/registrations';
 
 const getRegistrations = async (
   eventId: string
@@ -34,6 +35,8 @@ const getRegistrations = async (
     vesselType: registration.vessel.type.type,
     registrantName: registration.registrant.full_name,
     email: registration.registrant.email,
+    has_paid: registration.has_paid,
+    sent_confirmation_email: registration.sent_confirmation_email,
   }));
 };
 
@@ -43,9 +46,14 @@ interface RegistrationTableProps {
 
 const RegistrationTable = async ({ eventId }: RegistrationTableProps) => {
   const registrations = await getRegistrations(eventId);
+
   return (
     <>
-      <DataTable columns={columns} data={registrations} />
+      <DataTable
+        onDelete={deleteRegistrations}
+        columns={columns}
+        data={registrations}
+      />
     </>
   );
 };

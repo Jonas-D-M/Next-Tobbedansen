@@ -11,22 +11,17 @@ import { generateIdFromEntropySize } from 'lucia';
 
 async function login(formData: FormData): Promise<ActionResult> {
   'use server';
-  console.log('here');
   const username = formData.get('username');
   if (
     typeof username !== 'string' ||
     username.length < 3 ||
     username.length > 31
   ) {
-    console.log('Invalid username');
-
     return {
       error: 'Invalid username',
     };
   }
   const password = formData.get('password');
-  console.log('password', password);
-
   if (
     typeof password !== 'string' ||
     password.length < 6 ||
@@ -52,8 +47,6 @@ async function login(formData: FormData): Promise<ActionResult> {
     // Since protecting against this is non-trivial,
     // it is crucial your implementation is protected against brute-force attacks with login throttling etc.
     // If usernames are public, you may outright tell the user that the username is invalid.
-    console.log('incorrect!');
-
     return {
       error: 'Incorrect username or password',
     };
@@ -78,7 +71,6 @@ async function login(formData: FormData): Promise<ActionResult> {
     sessionCookie.value,
     sessionCookie.attributes
   );
-  console.log('here');
 
   return redirect('/');
 }

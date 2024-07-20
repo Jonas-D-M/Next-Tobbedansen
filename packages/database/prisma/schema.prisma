@@ -33,7 +33,7 @@ model Participant {
   first_name      String
   last_name       String
   date_of_birth   DateTime
-  registration    Registration @relation(fields: [registration_id], references: [id])
+  registration    Registration @relation(fields: [registration_id], references: [id], onDelete: Cascade)
   registration_id String
 }
 
@@ -52,18 +52,20 @@ model Registrant {
 }
 
 model Registration {
-  id            String        @id @default(uuid())
-  music_request String?
-  registrant    Registrant    @relation(fields: [registrant_id], references: [id], onDelete: Cascade)
-  registrant_id String
-  participants  Participant[]
-  vessel        Vessel        @relation(fields: [vessel_id], references: [id], onDelete: Cascade)
-  vessel_id     String
-  assosciation  String?
-  event         Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  eventId       String
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime?     @updatedAt
+  id                      String        @id @default(uuid())
+  music_request           String?
+  registrant              Registrant    @relation(fields: [registrant_id], references: [id], onDelete: Cascade)
+  registrant_id           String
+  participants            Participant[]
+  vessel                  Vessel        @relation(fields: [vessel_id], references: [id], onDelete: Cascade)
+  vessel_id               String
+  assosciation            String?
+  event                   Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId                 String
+  createdAt               DateTime      @default(now())
+  sent_confirmation_email Boolean       @default(false)
+  has_paid                Boolean       @default(false)
+  updatedAt               DateTime?     @updatedAt
 }
 
 model VesselType {

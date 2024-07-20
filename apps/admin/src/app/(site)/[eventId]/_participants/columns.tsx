@@ -1,7 +1,5 @@
 'use client';
-import { Checkbox } from '@/components/ui/checkbox';
 import { ColumnDef } from '@tanstack/react-table';
-import { DateTime } from 'luxon';
 
 export interface ParticipantColumns {
   id: string;
@@ -13,6 +11,10 @@ export interface ParticipantColumns {
 }
 
 export const columns: ColumnDef<ParticipantColumns>[] = [
+  {
+    accessorKey: 'vesselName',
+    header: 'Tobbe naam',
+  },
   {
     accessorKey: 'name',
     header: 'Naam',
