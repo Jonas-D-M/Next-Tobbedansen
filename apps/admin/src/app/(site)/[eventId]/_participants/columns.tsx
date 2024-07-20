@@ -1,7 +1,7 @@
 'use client';
 import { ColumnDef } from '@tanstack/react-table';
 
-export interface ParticipantColumns {
+export interface ParticipantColumnsType {
   id: string;
   name: string;
   dateOfBirth: string;
@@ -10,7 +10,7 @@ export interface ParticipantColumns {
   placeOfBirth?: string;
 }
 
-export const columns: ColumnDef<ParticipantColumns>[] = [
+export const columns: ColumnDef<ParticipantColumnsType>[] = [
   {
     accessorKey: 'vesselName',
     header: 'Tobbe naam',

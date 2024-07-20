@@ -38,7 +38,7 @@ export const columns: ColumnDef<RegistrationColumns>[] = [
       <Checkbox
         name='select-row'
         checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        onCheckedChange={row.getToggleSelectedHandler()}
         aria-label='Select row'
       />
     ),

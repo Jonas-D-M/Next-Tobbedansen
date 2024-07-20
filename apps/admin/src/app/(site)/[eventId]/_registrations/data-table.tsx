@@ -16,7 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { twJoin } from 'tailwind-merge';
 import {
@@ -58,6 +57,7 @@ export function DataTable<TData, TValue>({
   const selectionCount = selection.rows.length;
   const handleRowDeletion = () => {
     onDelete(selection.rows.map((row) => row.original));
+    table.resetRowSelection();
   };
 
   return (
