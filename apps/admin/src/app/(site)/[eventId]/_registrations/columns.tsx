@@ -14,6 +14,15 @@ export interface RegistrationColumns {
   sent_confirmation_email: boolean;
 }
 
+const generateMailTo = (
+  email: string,
+  vesselName: string,
+  year: string,
+  bankAccount: string
+) => {
+  return `mailto:${email}?subject=Inschrijving Tobbedansen ${year} - ${vesselName}&body=Bedankt%20voor%20uw%20inschrijving.%0D%0A%0D%0AHierbij%20de%20bevestiging%20dat%20u%20bent%20ingeschreven%20voor%20Tobbedansen%20${year}.%20In%20de%20bijlage%20kan%20u%20het%20regelement%20terugvinden%2C%20lees%20dit%20zeker%20goed%20door.%20%0D%0ADe%20inschrijvingskosten%20bedragen%20%E2%82%AC5%2Fvoertuig%20en%20%E2%82%AC7%2Fdeelnemer%20(verzekering).%20Dit%20bedrag%20dient%20overgeschreven%20te%20worden%20op%20volgend%20rekeningnummer%3A%0D%0A${bankAccount}.%20Met%20vermelding%20%E2%80%9CINSCHRIJVING%20%5Bnaamvoertuig%5D%20%2B%20reglement%20gelezen%20en%20goedgekeurd%E2%80%9D.%0D%0ADit%20ten%20laatste%20op%20dinsdag%2027%20augustus%202024%20of%20tot%20de%20inschrijvingen%20vol%20zitten.%20Later%20die%20week%20wordt%20een%20uur%20meegedeeld%20wanneer%20de%20deelnemers%20van%20de%20schans%20mogen%20gaan.%0D%0A%0D%0ATot%20dan!%0D%0AHet%20Tobbedansenteam.`;
+};
+
 export const columns: ColumnDef<RegistrationColumns>[] = [
   {
     header: 'ID',
@@ -61,6 +70,19 @@ export const columns: ColumnDef<RegistrationColumns>[] = [
   {
     accessorKey: 'email',
     header: 'Email',
+    cell: ({ row }) => {
+      return (
+        <a
+          href={generateMailTo(
+            row.getValue('email'),
+            row.getValue('vesselName'),
+            '2024',
+            'BE03 1430 9778 4084'
+          )}>
+          {row.getValue('email')}
+        </a>
+      );
+    },
   },
   {
     accessorKey: 'has_paid',
