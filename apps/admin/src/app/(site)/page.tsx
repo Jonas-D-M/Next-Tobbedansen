@@ -2,9 +2,8 @@ import React from 'react';
 import prisma from '../(api)/db';
 
 import { DateTime, Interval } from 'luxon';
-import { H1, H2, Small, Ul } from '@/components/typography';
+import { H1 } from '@/components/typography';
 import { Card } from '@/components/event';
-import { Car } from 'lucide-react';
 
 type GroupedEvents = Record<
   'current' | 'past',
