@@ -1,19 +1,5 @@
 import React from 'react';
-import fs from 'fs';
-import path from 'path';
-import Image from 'next/image';
 import { SponsorImage } from '@/components/sponsor-image';
-
-const getSponsorImages = async () => {
-  const imagesDirectory = path.join(process.cwd(), 'public/img/sponsors');
-  const fileNames = fs.readdirSync(imagesDirectory);
-
-  const images = fileNames.map((name) => ({
-    name,
-    path: `/img/sponsors/${name}`,
-  }));
-  return images;
-};
 
 const sponsors = [
   'img/sponsors/A5-batutrans-(1)_1.jpg',
@@ -67,8 +53,6 @@ const sponsors = [
 ];
 
 const Page = async () => {
-  const images = await getSponsorImages();
-
   return (
     <>
       <img className='o-banner__image' src='/img/contact.jpg' />
