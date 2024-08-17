@@ -8,8 +8,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React, { PropsWithChildren } from 'react';
+import { EventSettings } from './_settings';
 
 interface LayoutProps extends PropsWithChildren {
   params: {
@@ -20,7 +23,6 @@ interface LayoutProps extends PropsWithChildren {
 const Layout = async ({ params: { eventId }, children }: LayoutProps) => {
   const event = await prisma.event.findUnique({
     where: { id: eventId },
-    select: { year: true },
   });
 
   if (!event) {
@@ -28,20 +30,25 @@ const Layout = async ({ params: { eventId }, children }: LayoutProps) => {
   }
 
   return (
-    <div className='container flex flex-col grow'>
-      <Breadcrumb className='mb-2'>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href='/'>Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{event.year}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+    <div className='flex flex-col grow'>
       <section className='flex flex-col grow'>
-        <H1 className='mb-2'>Inschrijvingen {event.year}</H1>
+        <span className='inline-flex items-baseline gap-x-4 mb-2'>
+          <H1>Inschrijvingen {event.year}</H1>
+          <EventSettings event={event} />
+        </span>
+        <Breadcrumb className='mb-2'>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href='/'>Evenementen</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{event.year}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
         {children}
       </section>
     </div>

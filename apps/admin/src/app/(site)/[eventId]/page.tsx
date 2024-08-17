@@ -140,7 +140,7 @@ const Page = async ({ params: { eventId } }: PageProps) => {
         />
       </TabsContent>
       <TabsContent value='participants'>
-        <ParticipantTable columns={participantColumns} data={participants} />;
+        <ParticipantTable columns={participantColumns} data={participants} />
       </TabsContent>
     </Tabs>
   );

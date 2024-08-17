@@ -56,9 +56,9 @@ const Page = async () => {
   const events = await getEvents();
 
   return (
-    <section className='container'>
+    <section>
       <H1>Evenementen</H1>
-      <div className='flex flex-wrap gap-4 justify-center mt-2'>
+      <div className='flex flex-wrap gap-4 justify-center mt-2 md:grid grid-cols-3'>
         {events.current.map(
           ({ year, id, registration_start_date, registration_end_date }) => {
             return (
@@ -73,7 +73,7 @@ const Page = async () => {
           }
         )}
       </div>
-      <div className='flex flex-wrap gap-4 justify-center md:justify-between mt-2'>
+      <div className='flex flex-wrap gap-4 justify-center md:justify-between mt-2 md:grid grid-cols-3'>
         {events.past.map(
           ({ year, id, registration_start_date, registration_end_date }) => {
             return (
