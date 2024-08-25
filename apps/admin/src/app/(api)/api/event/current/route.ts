@@ -9,7 +9,7 @@ export async function GET() {
       AND: [
         {
           registration_end_date: {
-            lt: DateTime.now().toJSDate(),
+            gte: DateTime.now().toJSDate(),
           },
         },
         { is_active: true },
