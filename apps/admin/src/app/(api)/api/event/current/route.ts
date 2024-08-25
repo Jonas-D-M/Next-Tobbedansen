@@ -6,6 +6,14 @@ export async function GET() {
   const currentEvent = await prisma.event.findFirst({
     where: {
       year: DateTime.now().year,
+      AND: [
+        {
+          registration_end_date: {
+            lt: DateTime.now().toJSDate(),
+          },
+        },
+        { is_active: true },
+      ],
     },
     include: {
       vessel_types: {

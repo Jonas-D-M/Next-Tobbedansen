@@ -24,6 +24,7 @@ model Event {
   registration_end_date   DateTime       @default(now())
   vessel_types            VesselType[]
   registrations           Registration[]
+  is_active               Boolean        @default(true)
   createdAt               DateTime       @default(now())
   updatedAt               DateTime?      @updatedAt
 }
