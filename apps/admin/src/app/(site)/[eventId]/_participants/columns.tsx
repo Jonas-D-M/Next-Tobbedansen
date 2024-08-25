@@ -35,7 +35,10 @@ export const columns: ColumnDef<ParticipantColumnsType>[] = [
     accessorKey: 'email',
     header: 'E-mail',
   },
-
+  {
+    accessorKey: 'music_request'
+    header: 'Opmerking'
+  },
   {
     accessorKey: 'placeOfBirth',
     header: 'Geboorteplaats',
