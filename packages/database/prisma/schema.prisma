@@ -74,6 +74,7 @@ model VesselType {
   type            String
   vessels         Vessel[]
   events          Event[]
+  is_active       Boolean   @default(true)
   createdAt       DateTime  @default(now())
   updatedAt       DateTime? @updatedAt
 }

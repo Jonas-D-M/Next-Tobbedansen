@@ -8,7 +8,11 @@ export async function GET() {
       year: DateTime.now().year,
     },
     include: {
-      vessel_types: true,
+      vessel_types: {
+        where: {
+          is_active: true,
+        },
+      },
     },
   });
 
