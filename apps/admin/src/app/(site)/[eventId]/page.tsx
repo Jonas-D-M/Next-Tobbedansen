@@ -13,6 +13,10 @@ import {
 import { DataTable as ParticipantTable } from './_participants/data-table';
 import { DataTable as RegistrationTable } from './_registrations/data-table';
 import { deleteRegistrations } from '@/actions/registrations';
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
+import { json2csv } from 'json-2-csv';
+import { ExportButton } from '@/components/export-button';
 
 interface PageProps {
   params: {
@@ -27,13 +31,20 @@ const getParticipants = async (
     where: {
       id: eventId,
     },
-    select: {
+    include: {
       registrations: {
-        select: {
-          id: true,
+        orderBy: {
+          createdAt: 'desc',
+        },
+        include: {
           vessel: {
             select: {
               name: true,
+              type: {
+                select: {
+                  type: true,
+                },
+              },
             },
           },
           registrant: {
@@ -65,6 +76,10 @@ const getParticipants = async (
         address: registration.registrant.address,
         email: registration.registrant.email,
         placeOfBirth: registration.registrant.place_of_birth,
+        musicRequest: registration.music_request ?? '',
+        vesselType: registration.vessel.type.type,
+        assosciation: registration.assosciation,
+        music_request: registration.music_request || '',
       };
 
       const participants = registration.participants.map((participant) => ({
@@ -72,9 +87,13 @@ const getParticipants = async (
         name: participant.full_name,
         vesselName: registration.vessel.name,
         dateOfBirth: formatDate(participant.date_of_birth),
-        address: undefined,
-        email: undefined,
-        placeOfBirth: undefined,
+        address: '',
+        email: '',
+        placeOfBirth: '',
+        musicRequest: '',
+        vesselType: '',
+        assosciation: registration.assosciation || '',
+        music_request: '',
       }));
       return [registrant, ...participants];
     })
@@ -84,13 +103,19 @@ const getParticipants = async (
 
 const getRegistrations = async (
   eventId: string
-): Promise<RegistrationColumns[]> => {
+): Promise<{
+  registrations: RegistrationColumns[];
+  event: { year: number };
+}> => {
   const event = await prisma.event.findUniqueOrThrow({
     where: {
       id: eventId,
     },
-    select: {
+    include: {
       registrations: {
+        orderBy: {
+          createdAt: 'desc',
+        },
         include: {
           registrant: true,
           vessel: {
@@ -107,31 +132,57 @@ const getRegistrations = async (
       },
     },
   });
-  return event.registrations.map((registration) => ({
+  const registrations = event.registrations.map((registration) => ({
     id: registration.id,
     vesselName: registration.vessel.name,
+    assosciation: registration.assosciation,
     vesselType: registration.vessel.type.type,
     registrantName: registration.registrant.full_name,
     email: registration.registrant.email,
     has_paid: registration.has_paid,
     sent_confirmation_email: registration.sent_confirmation_email,
   }));
+
+  return { registrations, event: { year: event.year } };
+};
+
+const generateCsv = (participants: ParticipantColumnsType[]) => {
+  const csv = json2csv(
+    participants.map((participant) => ({
+      'Tobbe naam': participant.vesselName,
+      'Tobbe type': participant.vesselType,
+      Naam: participant.name,
+      Vereniging: participant.assosciation,
+      Adres: participant.address,
+      Geboorteplaats: participant.placeOfBirth,
+      Geboortedatum: participant.dateOfBirth,
+      'E-mail': participant.email,
+      Opmerking: participant.music_request,
+    })),
+    {}
+  );
+  return csv;
 };
 
 const Page = async ({ params: { eventId } }: PageProps) => {
   const participants = await getParticipants(eventId);
-  const registrations = await getRegistrations(eventId);
+  const { registrations, event } = await getRegistrations(eventId);
+
+  const csv = generateCsv(participants);
 
   return (
     <Tabs defaultValue='registrations'>
-      <TabsList>
-        <TabsTrigger value='registrations'>
-          Registraties ({registrations.length})
-        </TabsTrigger>
-        <TabsTrigger value='participants'>
-          Deelnemers ({participants.length})
-        </TabsTrigger>
-      </TabsList>
+      <div className='flex justify-between'>
+        <TabsList>
+          <TabsTrigger value='registrations'>
+            Registraties ({registrations.length})
+          </TabsTrigger>
+          <TabsTrigger value='participants'>
+            Deelnemers ({participants.length})
+          </TabsTrigger>
+        </TabsList>
+        <ExportButton fileName={`tobbedansen-${event.year}.csv`} data={csv} />
+      </div>
       <TabsContent value='registrations'>
         <RegistrationTable
           onDelete={deleteRegistrations}
@@ -140,7 +191,7 @@ const Page = async ({ params: { eventId } }: PageProps) => {
         />
       </TabsContent>
       <TabsContent value='participants'>
-        <ParticipantTable columns={participantColumns} data={participants} />;
+        <ParticipantTable columns={participantColumns} data={participants} />
       </TabsContent>
     </Tabs>
   );

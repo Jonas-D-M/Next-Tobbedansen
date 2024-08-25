@@ -59,9 +59,21 @@ export const columns: ColumnDef<RegistrationColumns>[] = [
     accessorKey: 'vesselName',
     header: 'Tobbe naam',
   },
+
   {
     accessorKey: 'vesselType',
     header: 'Tobbe type',
+  },
+  {
+    accessorKey: 'assosciation',
+    header: 'Vereniging',
+    cell: ({ row }) => {
+      return (
+        <div className='flex items-center'>
+          {row.getValue('assosciation') || '-'}
+        </div>
+      );
+    },
   },
   {
     accessorKey: 'registrantName',

@@ -5,9 +5,13 @@ export interface ParticipantColumnsType {
   id: string;
   name: string;
   dateOfBirth: string;
-  address?: string;
-  email?: string;
-  placeOfBirth?: string;
+  address: string | null;
+  email: string | null;
+  placeOfBirth: string | null;
+  vesselName: string;
+  vesselType: string;
+  music_request: string | null;
+  assosciation: string | null;
 }
 
 export const columns: ColumnDef<ParticipantColumnsType>[] = [
