@@ -17,10 +17,9 @@ const createCountdownDate = (startingDate: Date) => {
   return dateObj;
 };
 
-const shouldShowCountdown = (eventStartDate: Date, showFromMonth = 2) => {
+const shouldShowCountdown = (eventStartDate: Date, showFromMonth = 1) => {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
-
   if (currentMonth >= showFromMonth || currentDate >= eventStartDate) {
     return true;
   }
@@ -39,7 +38,7 @@ export const Countdown = () => {
       countdown: true,
       date: createCountdownDate(eventStartingDate),
       outputTranslation: {
-        year: 'Years',
+        year: 'Jaar',
         week: 'Weken',
         day: 'Dagen',
         hour: 'Uren',
