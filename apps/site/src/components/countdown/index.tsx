@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Countdown as CD } from './countdown';
 import '@/style/countDown.min.css';
-import { getStartingDate } from '@/utils/helpers';
+import { getEventWeekend, isDuringEvent } from '@/utils/helpers';
 
 const createCountdownDate = (startingDate: Date) => {
   const dateObj = {
@@ -17,26 +17,17 @@ const createCountdownDate = (startingDate: Date) => {
   return dateObj;
 };
 
-const shouldShowCountdown = (eventStartDate: Date, showFromMonth = 1) => {
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth();
-  if (currentMonth >= showFromMonth || currentDate >= eventStartDate) {
-    return true;
-  }
-  return false;
-};
-
 export const Countdown = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const countDownRef = useRef<CD | null>(null);
 
   useEffect(() => {
     if (!containerRef.current || countDownRef.current) return;
-    const eventStartingDate = getStartingDate();
+    const { friday } = getEventWeekend();
     const cd = new CD({
       cont: containerRef.current,
       countdown: true,
-      date: createCountdownDate(eventStartingDate),
+      date: createCountdownDate(friday),
       outputTranslation: {
         year: 'Jaar',
         week: 'Weken',
@@ -49,8 +40,8 @@ export const Countdown = () => {
       outputFormat: 'day|hour|minute|second',
     });
     countDownRef.current = cd;
-
-    if (shouldShowCountdown(eventStartingDate)) {
+    console.log(friday);
+    if (!isDuringEvent()) {
       cd.start();
     }
 
