@@ -26,23 +26,29 @@ const Page = () => {
               </div>
               <div className='o-layout__item u-1-of-2-bp3'>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Iedereen die vorig jaar aanwezig was, kan getuigen.
-                  Tobbedansen 2023 was een editie om nooit te vergeten. Zowel{' '}
-                  <i>Opt gemakske</i> als <i>Go ninja GO</i> speelden de pannen
-                  van het dak waarna de DJ’s <i>Nine 2 Five</i> en{' '}
-                  <i>TWO FOR YOU</i> het feestje op een magistrale wijze
-                  afwerkten. Kortom, het was een editie om in te kaderen.
+                  Iedereen die er vorig jaar bij was, weet het: Tobbedansen 2024
+                  was er boenk op. Van Wulder (die last minute inviel voor
+                  Pixiedust) tot Still Crazy, en van NotForRadio tot Proudmich,
+                  elke act deed de oude Leie golven creëren. Het werd een avond
+                  om in te kaderen.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Ook dit jaar mogen we natuurlijk niet onderdoen. We hebben
-                  opnieuw enkele toppers op het affiche staan. Zo beginnen we om
-                  20u met het opkomende talent <i>Pixiedust</i> waarna{' '}
-                  <i>Still Crazy</i>, bekend van onder meer De Gentse Feesten,
-                  het feestje compleet zal maken. Wanneer iedereen volledig is
-                  opgewarmd zal <i>NotForRadio</i> met een gekke liveshow de
-                  ambiance naar een hoogtepunt brengen. Tot slot zal ons lokaal
-                  talent <i>Proudmich</i> driedubbele knopen in de veters van
-                  ieders dansschoenen draaien tot het einde van de avond!
+                  En ook dit jaar doen we er niet voor onder. We hebben opnieuw
+                  een knaller van een line-up voor jullie klaarstaan. We trappen
+                  af om <b>19u45</b> met <b>Pixiedust</b>, die er vorig jaar
+                  helaas niet bij kon zijn, maar nu wél de dansvloer in vuur en
+                  vlam komt zetten. Vervolgens is het aan{' '}
+                  <b>June for President</b>, deze zomer ook te zien op de Gentse
+                  Feesten, om de sfeer verder op te drijven. Als iedereen goed
+                  opgewarmd is, stuwt <b>MC Captain Soundsystem</b> met zijn
+                  zwoele beats de sfeer richting hoogtepunt. En dan… het moment
+                  suprême: <b>FLO WINDEY ft. SKYVE</b> sluiten de avond én hun
+                  zomer af met hun allerlaatste DJ-set OOIT. Ze hebben plechtig
+                  beloofd om het plein te doen daveren en jullie zwetend en vol
+                  adrenaline uit te zwaaien. Verwacht een explosieve mix van
+                  pompende beats, energieke mash-ups en een sfeer om nooit te
+                  vergeten. Mis deze unieke kans niet om het duo nog één keer
+                  live mee te maken.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
                   Net zoals vorig jaar zijn er zowel combi-tickets als aparte

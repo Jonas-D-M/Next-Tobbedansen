@@ -29,15 +29,13 @@ const Page = () => {
                   Zaterdag gaan we door met het originele idee, gebaseerd op het
                   bekende TROS-programma “TER LAND, TER ZEE EN IN DE LUCHT”,
                   waarbij de deelnemers met een zelf in elkaar geknutselde tobbe
-                  van een schans naar beneden rijden en zo snel mogelijk de bel
-                  proberen te bereiken.
+                  van een schans naar beneden rijden of glijden en zo snel
+                  mogelijk de bel proberen te bereiken.
                 </p>
 
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  De laatste 3 jaar werden de deelnemers naar beneden geduwd op
-                  een ponton om zo snel mogelijk de bel te bereiken. Dit jaar
-                  grijpen we terug naar een nieuw concept. Aan de start worden
-                  de deelnemers naar beneden geduwd om met een degelijke
+                  Dit jaar gaan we verder met ons nieuw concept. Aan de start
+                  worden de deelnemers naar beneden geduwd om met een degelijke
                   snelheid van de schans (met een helling van ± 20°) te razen.
                   Vanaf deze schans komt de tobbe rechtstreeks in het water
                   terecht, eenmaal in het water varen/pedellen/… de deelnemers
@@ -82,23 +80,26 @@ const Page = () => {
                 </div> */}
 
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Zaterdag na de prijsuitreiking gaan we door met een tweede
-                  spetterend feestje. Dit wordt op gang getrokken door{' '}
-                  <i>Recourse52</i>, waarna <i>Uncle Phill</i> (gekend van de
-                  Engie Parkies, De Sinksenfoor, Druivenfestival…) het feest
-                  compleet zullen maken na het vuurwerk.
+                  <b>Zaterdag 6 september 2025</b> wordt een dag om niet snel te
+                  vergeten! Na de prijsuitreiking gaan we meteen door met een
+                  tweede spetterend feestje, en dat doen we in stijl.{' '}
+                  <b>Opt Gemakske</b> bijt de spits af en zet de toon. Daarna
+                  maken <b>The Juliets</b> hun langverwachte comeback in
+                  Machelen, en zorgen ze net na het vuurwerk voor een knallend
+                  vervolg.
+                  <br />
+                  <br />
+                  Maar daar stopt het niet!
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Hierna zetten we het feest verder met het dj duo{' '}
-                  <i>FRIENDZONE</i>
-                  (winnaar DJ Contest ‘the graduates’). Vervolgens zal Karakals
-                  ( gekend van MNM Start To DJ, Balaton Sound, Sunrise
-                  Festival,….) overnemen waarna onze eigen <i>Miles</i>
-                  <br></br>
-                  Tobbedansen 2024 tot een mooi einde zal brengen.
+                  Onze vaste waarde en resident DJ van Tobbedansen, <b>MILES</b>
+                  , houdt de sfeer hoog, gevolgd door <b>DJ Voltage</b> (bekend
+                  van Qmusic, Tomorrowland, Zeverrock, Hype’O Dream…). Als kers
+                  op de taart brengt <b>Studio Chewy</b> (Campo Solar, Studio
+                  Brussel…) Tobbedansen 2025 naar een zinderende finale.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Schrijf 31 augustus 2024 dus in jullie agenda, wij kijken
+                  Schrijf 6 september 2025 dus in jullie agenda, wij kijken
                   alvast uit naar jullie originele constructies en het feestje
                   achteraf, jullie hopelijk ook.
                 </p>
