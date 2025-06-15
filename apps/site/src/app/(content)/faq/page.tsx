@@ -62,13 +62,13 @@ const Page = () => {
                   <ul>
                     <li>
                       <p>
-                        Op vrijdag 30 augustus openen de deuren om 19u en
+                        Op vrijdag 5 september openen de deuren om 19u en
                         sluiten we de eerste avond af om 2u.
                       </p>
                     </li>
                     <li>
                       <p>
-                        Op zaterdag 31 augustus gaan de deuren open om 14u, de
+                        Op zaterdag 6 september gaan de deuren open om 14u, de
                         eerste tobbe duikt van de schans af om 14u30. Om 4u gaan
                         de deuren dicht en keert de rust terug op het Roger
                         Raveelplein.
@@ -82,7 +82,7 @@ const Page = () => {
                     Heb je na het lezen van alle info toch nog een vraag? Het
                     lijkt onmogelijk maar het kan. Neem dan contact op met ons
                     en we proberen jouw vraag zo snel mogelijk te beantwoorden.
-                    Je bereikt ons via het contactformulier.
+                    Je bereikt ons via onze Facebookpagina.
                   </p>
                 </div>
               </div>
