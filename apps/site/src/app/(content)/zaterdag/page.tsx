@@ -127,7 +127,7 @@ const Page = () => {
                     {
                       label: 'Miles',
                       time: '24u - 01u',
-                      image: '/img/artists/saturday/3.jpg',
+                      image: '/img/artists/saturday/3.jpeg',
                     },
                     {
                       label: 'DJ Voltage',
