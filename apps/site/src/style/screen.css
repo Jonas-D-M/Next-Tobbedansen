@@ -803,7 +803,7 @@ u {
 }
 
 .u-bg-picture {
-  background: url('/img/machelen-put-crowded.jpg');
+  background: url('/img/home.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -815,7 +815,7 @@ u {
 
 @media (min-width: 992px) {
   .u-bg-picture {
-    background-image: url('/img/machelen-put-crowded.jpg');
+    background-image: url('/img/home.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
