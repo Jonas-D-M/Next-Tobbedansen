@@ -1,3 +1,4 @@
+import LineupBlock from '@/components/LineupBlock';
 import { getEventWeekend } from '@/utils/helpers';
 import { Metadata } from 'next';
 import React from 'react';
@@ -63,10 +64,35 @@ const Page = () => {
                   te tonen :(
                 </video> */}
                 </div>
+                <LineupBlock
+                  items={[
+                    {
+                      label: 'Pixiedust',
+                      time: '19u45 – 21u15',
+                      image: '/img/artists/friday/1.webp',
+                    },
+                    {
+                      label: 'June for President',
+                      time: '22u – 23u45',
+                      image: '/img/artists/friday/2.jpg',
+                    },
+                    {
+                      label: 'MC Captain Soundsystem',
+                      time: '00u – 01u',
+                      image: '/img/artists/friday/3.png',
+                    },
+                    {
+                      label: 'FLO WINDY ft. SKYVE',
+                      time: '01u – 02u',
+                      image: '/img/artists/friday/4.jpg',
+                    },
+                  ]}
+                />
               </div>
             </div>
           </article>
         </div>
+        <div className='o-row o-row-xl'></div>
       </section>
     </>
   );

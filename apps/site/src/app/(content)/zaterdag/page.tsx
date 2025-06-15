@@ -1,3 +1,4 @@
+import LineupBlock from '@/components/LineupBlock';
 import { getEventWeekend } from '@/utils/helpers';
 import { Metadata } from 'next';
 import React from 'react';
@@ -111,6 +112,35 @@ const Page = () => {
                   te tonen :(
                 </video>
               </div> */}
+                <LineupBlock
+                  items={[
+                    {
+                      label: 'Opt Gemakske',
+                      time: '20u – 21u30',
+                      image: '/img/artists/saturday/1.jpg',
+                    },
+                    {
+                      label: 'The Juliets',
+                      time: '22u30 - 24u',
+                      image: '/img/artists/saturday/2-HORIZONTAAL.jpg',
+                    },
+                    {
+                      label: 'Miles',
+                      time: '24u - 01u',
+                      image: '/img/artists/saturday/3.jpg',
+                    },
+                    {
+                      label: 'DJ Voltage',
+                      time: '01u - 02u30',
+                      image: '/img/artists/saturday/4.jpg',
+                    },
+                    {
+                      label: 'Studio Chewy',
+                      time: '02u30 - 04u',
+                      image: '/img/artists/saturday/5.png',
+                    },
+                  ]}
+                />
               </div>
             </div>
           </article>
