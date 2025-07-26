@@ -18,6 +18,7 @@ export const endpoints = {
 
 export const pages: PageType[] = [
   { title: 'Home', href: '/' },
+  { title: 'Tickets', href: '/tickets' },
   { title: 'Vrijdag', href: '/vrijdag' },
   { title: 'Zaterdag', href: '/zaterdag' },
   { title: 'FAQ', href: '/faq' },

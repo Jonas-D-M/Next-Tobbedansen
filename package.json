@@ -20,7 +20,8 @@
     "db:seed": "turbo run db:seed",
     "prisma:studio": "turbo run prisma:studio",
     "prisma:migrate-dev": "pnpm --filter @tobbedansen/db prisma:migrate-dev",
-    "prisma:migrate-deploy": "pnpm --filter @tobbedansen/db prisma:migrate-deploy"
+    "prisma:migrate-deploy": "pnpm --filter @tobbedansen/db prisma:migrate-deploy",
+    "gen:rest": "pnpm --filter site run gen:rest"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",

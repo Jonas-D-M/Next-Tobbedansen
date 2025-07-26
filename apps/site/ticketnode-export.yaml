@@ -1,0 +1,156 @@
+openapi: 3.0.0
+info:
+  title: Ticketnode API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3002/v1
+paths:
+  /events/{eventId}/tickets:
+    get:
+      operationId: getEventTickets
+      description: Get available ticket types for an event
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved available ticket types.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ticket'
+              example:
+                - id: standard
+                  name: Vrijdagticket
+                  description: General admission ticket to the event.
+                  price: 5
+                  availableQuantity: 150
+                - id: standard
+                  name: Zaterdagticket
+                  description: General admission ticket to the event.
+                  price: 5
+                  availableQuantity: 150
+                - id: standard
+                  name: Combiticket
+                  description: General admission ticket to the event.
+                  price: 8
+                  availableQuantity: 150
+        '404':
+          description: Event not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                code: EVENT_NOT_FOUND
+                message: The requested event does not exist.
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example: {}
+
+  /events/{eventId}/tickets/purchase:
+    post:
+      operationId: purchaseTickets
+      description: Purchase event tickets
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Purchase successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseResponse'
+              example:
+                orderId: d290f1ee-6c54-4b01-90e6-d701748f0851
+                checkoutUrl: https://checkout.stripe.com/pay/cs_test_...
+        '400':
+          description: Missing personal info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                code: MISSING_PERSONAL_INFO
+                message: Name and email address are required for purchase.
+        '404':
+          description: Ticket ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                code: TICKET_ID_NOT_FOUND
+                message: The specified ticket ID does not exist for this event.
+        '409':
+          description: Not enough tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                code: NOT_ENOUGH_TICKETS
+                message: Only 5 tickets remaining, but 10 were requested.
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example: {}
+
+components:
+  schemas:
+    Ticket:
+      type: object
+      required:
+        - id
+        - name
+        - price
+        - availableQuantity
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        availableQuantity:
+          type: integer
+
+    PurchaseResponse:
+      type: object
+      required:
+        - orderId
+        - checkoutUrl
+      properties:
+        orderId:
+          type: string
+        checkoutUrl:
+          type: string
+
+    ErrorResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
