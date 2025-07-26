@@ -38,14 +38,14 @@ const Page = () => {
                   een knaller van een line-up voor jullie klaarstaan. We trappen
                   af om <b>19u45</b> met <b>Pixiedust</b>, die er vorig jaar
                   helaas niet bij kon zijn, maar nu wél de dansvloer in vuur en
-                  vlam komt zetten. Vervolgens is het aan{' '}
-                  <b>June for President</b>, deze zomer ook te zien op de Gentse
-                  Feesten, om de sfeer verder op te drijven. Als iedereen goed
-                  opgewarmd is, stuwt <b>MC Captain Soundsystem</b> met zijn
-                  zwoele beats de sfeer richting hoogtepunt. En dan… het moment
-                  suprême: <b>FLO WINDEY ft. SKYVE</b> sluiten de avond én hun
-                  zomer af met hun allerlaatste DJ-set OOIT. Ze hebben plechtig
-                  beloofd om het plein te doen daveren en jullie zwetend en vol
+                  vlam komt zetten. Vervolgens is het aan <b>JFP</b>, deze zomer
+                  ook te zien op de Gentse Feesten, om de sfeer verder op te
+                  drijven. Als iedereen goed opgewarmd is, stuwt{' '}
+                  <b>MC Captain Soundsystem</b> met zijn zwoele beats de sfeer
+                  richting hoogtepunt. En dan… het moment suprême:{' '}
+                  <b>FLO WINDEY ft. SKYVE</b> sluiten de avond én hun zomer af
+                  met hun allerlaatste DJ-set OOIT. Ze hebben plechtig beloofd
+                  om het plein te doen daveren en jullie zwetend en vol
                   adrenaline uit te zwaaien. Verwacht een explosieve mix van
                   pompende beats, energieke mash-ups en een sfeer om nooit te
                   vergeten. Mis deze unieke kans niet om het duo nog één keer
@@ -72,7 +72,7 @@ const Page = () => {
                       image: '/img/artists/friday/1.webp',
                     },
                     {
-                      label: 'June for President',
+                      label: 'JFP',
                       time: '22u – 23u45',
                       image: '/img/artists/friday/2.jpg',
                     },
