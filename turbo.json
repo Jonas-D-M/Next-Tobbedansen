@@ -8,6 +8,7 @@
       "dependsOn": ["^db:generate"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "gen:rest": {},
     "type-check": {},
     "dev": {
       "dependsOn": ["^compose:up", "^db:generate"],
