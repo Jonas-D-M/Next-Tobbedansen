@@ -106,7 +106,7 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
   }, [step]);
 
   if (error) {
-    return <div>Fout bij het ophalen van tickets: {error.message}</div>;
+    return <div>Het is momenteel niet mogelijk om tickets te bestellen.</div>;
   }
 
   if (!tickets) {

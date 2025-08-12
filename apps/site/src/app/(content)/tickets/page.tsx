@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const Page = () => {
-  const eventId = '019843d8-3498-2ffa-55b9-603da387c0af';
+  const eventId = '0198966a-d0ea-062c-c186-7574c10523aa';
 
   return (
     <>

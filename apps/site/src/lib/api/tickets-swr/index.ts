@@ -43,7 +43,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  * Get available ticket types for an event
  */
 export const getGetEventTicketsUrl = (eventId: string) => {
-  return `/v1/events/${eventId}/tickets`;
+  return `/events/${eventId}/tickets`;
 };
 
 export const getEventTickets = async (
@@ -57,7 +57,7 @@ export const getEventTickets = async (
 };
 
 export const getGetEventTicketsKey = (eventId: string) =>
-  [`/v1/events/${eventId}/tickets`] as const;
+  [`/events/${eventId}/tickets`] as const;
 
 export type GetEventTicketsQueryResult = NonNullable<
   Awaited<ReturnType<typeof getEventTickets>>
@@ -98,7 +98,7 @@ export const useGetEventTickets = <TError = ErrorResponse>(
  * Purchase event tickets
  */
 export const getPurchaseTicketsUrl = (eventId: string) => {
-  return `/v1/events/${eventId}/tickets/purchase`;
+  return `/events/${eventId}/tickets/purchase`;
 };
 
 export const purchaseTickets = async (
@@ -129,7 +129,7 @@ export const getPurchaseTicketsMutationFetcher = (
   };
 };
 export const getPurchaseTicketsMutationKey = (eventId: string) =>
-  [`/v1/events/${eventId}/tickets/purchase`] as const;
+  [`/events/${eventId}/tickets/purchase`] as const;
 
 export type PurchaseTicketsMutationResult = NonNullable<
   Awaited<ReturnType<typeof purchaseTickets>>
