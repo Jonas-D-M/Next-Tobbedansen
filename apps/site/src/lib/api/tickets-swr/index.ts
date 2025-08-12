@@ -19,6 +19,14 @@ export interface Ticket {
   availableQuantity: number;
 }
 
+export interface PurchaseTicketsBody {
+  ticketId: string;
+  customerFirstName: string;
+  customerLastName: string;
+  customerEmail: string;
+  ticketQuantity: number;
+}
+
 export interface PurchaseResponse {
   orderId: string;
   checkoutUrl: string;
@@ -35,7 +43,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  * Get available ticket types for an event
  */
 export const getGetEventTicketsUrl = (eventId: string) => {
-  return `/events/${eventId}/tickets`;
+  return `/v1/events/${eventId}/tickets`;
 };
 
 export const getEventTickets = async (
@@ -49,7 +57,7 @@ export const getEventTickets = async (
 };
 
 export const getGetEventTicketsKey = (eventId: string) =>
-  [`/events/${eventId}/tickets`] as const;
+  [`/v1/events/${eventId}/tickets`] as const;
 
 export type GetEventTicketsQueryResult = NonNullable<
   Awaited<ReturnType<typeof getEventTickets>>
@@ -90,16 +98,22 @@ export const useGetEventTickets = <TError = ErrorResponse>(
  * Purchase event tickets
  */
 export const getPurchaseTicketsUrl = (eventId: string) => {
-  return `/events/${eventId}/tickets/purchase`;
+  return `/v1/events/${eventId}/tickets/purchase`;
 };
 
 export const purchaseTickets = async (
   eventId: string,
+  body: PurchaseTicketsBody,
   options?: RequestInit
 ): Promise<PurchaseResponse> => {
   return customInstanceSWR<PurchaseResponse>(getPurchaseTicketsUrl(eventId), {
     ...options,
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+    body: JSON.stringify(body),
   });
 };
 
@@ -107,12 +121,15 @@ export const getPurchaseTicketsMutationFetcher = (
   eventId: string,
   options?: SecondParameter<typeof customInstanceSWR>
 ) => {
-  return (_: Key, __: { arg: Arguments }): Promise<PurchaseResponse> => {
-    return purchaseTickets(eventId, options);
+  return (
+    _: Key,
+    { arg }: { arg: PurchaseTicketsBody }
+  ): Promise<PurchaseResponse> => {
+    return purchaseTickets(eventId, arg, options);
   };
 };
 export const getPurchaseTicketsMutationKey = (eventId: string) =>
-  [`/events/${eventId}/tickets/purchase`] as const;
+  [`/v1/events/${eventId}/tickets/purchase`] as const;
 
 export type PurchaseTicketsMutationResult = NonNullable<
   Awaited<ReturnType<typeof purchaseTickets>>

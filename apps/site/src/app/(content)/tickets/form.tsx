@@ -18,17 +18,24 @@ import {
 import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
-const ticketOrderSchema = z.object({
-  name: z.string().min(1, 'Je naam is verplicht'),
-  email: z.string().email('Vul een geldig e-mailadres in'),
-  quantity: z.coerce
-    .number({
-      required_error: 'Aantal is verplicht',
-      invalid_type_error: 'Aantal moet een geldig getal zijn',
-    })
-    .min(1, 'Je moet minstens 1 ticket kiezen')
-    .max(10, 'Je kan maximaal 10 tickets bestellen'),
-});
+const ticketOrderSchema = z
+  .object({
+    customerFirstName: z.string().min(1, 'Je naam is verplicht'),
+    customerLastName: z.string().min(1, 'Je achternaam is verplicht'),
+    customerEmail: z.string().email('Vul een geldig e-mailadres in'),
+    emailConfirm: z.string().email('Vul een geldig e-mailadres in'),
+    ticketQuantity: z.coerce
+      .number({
+        required_error: 'Aantal is verplicht',
+        invalid_type_error: 'Aantal moet een geldig getal zijn',
+      })
+      .min(1, 'Je moet minstens 1 ticket kiezen')
+      .max(10, 'Je kan maximaal 10 tickets bestellen'),
+  })
+  .refine((data) => data.customerEmail === data.emailConfirm, {
+    message: 'De e-mailadressen komen niet overeen',
+    path: ['emailConfirm'],
+  });
 
 type TicketOrderFormValues = z.infer<typeof ticketOrderSchema>;
 
@@ -40,7 +47,13 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
 
   const form = useForm<TicketOrderFormValues>({
     resolver: zodResolver(ticketOrderSchema),
-    defaultValues: { name: '', email: '', quantity: 1 },
+    defaultValues: {
+      customerFirstName: '',
+      customerEmail: '',
+      emailConfirm: '',
+      ticketQuantity: 1,
+      customerLastName: '',
+    },
     mode: 'onChange',
   });
 
@@ -67,9 +80,11 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
     if (!selectedTicketId) return;
 
     try {
+      // Exclude emailConfirm from API submission since it's only for client-side validation
+      const { emailConfirm, ...purchaseData } = values;
       const response = await purchase({
         ticketId: selectedTicketId,
-        ...values,
+        ...purchaseData,
       });
 
       if (response?.checkoutUrl) {
@@ -135,10 +150,10 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
 
               <FormField
                 control={form.control}
-                name='name'
+                name='customerFirstName'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Naam</FormLabel>
+                    <FormLabel>Voornaam</FormLabel>
                     <FormControl>
                       <Input
                         placeholder='Jouw naam'
@@ -153,7 +168,25 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
 
               <FormField
                 control={form.control}
-                name='email'
+                name='customerLastName'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Achternaam</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder='Jouw naam'
+                        {...field}
+                        className='w-full'
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name='customerEmail'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>E-mailadres</FormLabel>
@@ -172,7 +205,26 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
 
               <FormField
                 control={form.control}
-                name='quantity'
+                name='emailConfirm'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Bevestig e-mailadres</FormLabel>
+                    <FormControl>
+                      <Input
+                        type='email'
+                        placeholder='voorbeeld@domein.be'
+                        {...field}
+                        className='w-full'
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name='ticketQuantity'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Aantal</FormLabel>
@@ -189,11 +241,14 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
                 )}
               />
 
-              <div className='text-right text-sm text-gray-700 font-medium'>
+              <div className='text-right text-gray-700 font-medium'>
                 Totaal: €
                 {(
-                  Number(form.watch('quantity') || 0) * selectedTicket.price
+                  Number(form.watch('ticketQuantity') || 0) *
+                    selectedTicket.price +
+                  0.35
                 ).toFixed(2)}
+                <p className='text-sm text-gray-500'>*Incluis service fee</p>
               </div>
 
               {purchaseError && (
