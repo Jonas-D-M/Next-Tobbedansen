@@ -19,6 +19,14 @@ export interface Ticket {
   availableQuantity: number;
 }
 
+export interface PurchaseTicketsBody {
+  ticketId: string;
+  customerFirstName: string;
+  customerLastName: string;
+  customerEmail: string;
+  ticketQuantity: number;
+}
+
 export interface PurchaseResponse {
   orderId: string;
   checkoutUrl: string;
@@ -95,11 +103,17 @@ export const getPurchaseTicketsUrl = (eventId: string) => {
 
 export const purchaseTickets = async (
   eventId: string,
+  body: PurchaseTicketsBody,
   options?: RequestInit
 ): Promise<PurchaseResponse> => {
   return customInstanceSWR<PurchaseResponse>(getPurchaseTicketsUrl(eventId), {
     ...options,
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+    body: JSON.stringify(body),
   });
 };
 
@@ -107,8 +121,11 @@ export const getPurchaseTicketsMutationFetcher = (
   eventId: string,
   options?: SecondParameter<typeof customInstanceSWR>
 ) => {
-  return (_: Key, __: { arg: Arguments }): Promise<PurchaseResponse> => {
-    return purchaseTickets(eventId, options);
+  return (
+    _: Key,
+    { arg }: { arg: PurchaseTicketsBody }
+  ): Promise<PurchaseResponse> => {
+    return purchaseTickets(eventId, arg, options);
   };
 };
 export const getPurchaseTicketsMutationKey = (eventId: string) =>

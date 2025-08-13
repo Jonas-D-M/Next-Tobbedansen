@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const Page = () => {
-  const eventId = 'tobbedansen-2025';
+  const eventId = '0198966a-d0ea-062c-c186-7574c10523aa';
 
   return (
     <>
