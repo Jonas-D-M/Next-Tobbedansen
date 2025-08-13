@@ -54,7 +54,7 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
       ticketQuantity: 1,
       customerLastName: '',
     },
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   const {
