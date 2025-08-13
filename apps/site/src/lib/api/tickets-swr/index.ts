@@ -140,12 +140,12 @@ export const usePurchaseTickets = <TError = ErrorResponse>(
   eventId: string,
   options?: {
     swr?: SWRMutationConfiguration<
-      Awaited<ReturnType<typeof purchaseTickets>>,
+      PurchaseResponse,
       TError,
-      Key,
-      Arguments,
-      Awaited<ReturnType<typeof purchaseTickets>>
-    > & { swrKey?: string };
+      string | readonly [`/events/${string}/tickets/purchase`],
+      PurchaseTicketsBody,
+      PurchaseResponse
+    > & { swrKey?: string | readonly [`/events/${string}/tickets/purchase`] };
     request?: SecondParameter<typeof customInstanceSWR>;
   }
 ) => {
@@ -154,7 +154,12 @@ export const usePurchaseTickets = <TError = ErrorResponse>(
   const swrKey = swrOptions?.swrKey ?? getPurchaseTicketsMutationKey(eventId);
   const swrFn = getPurchaseTicketsMutationFetcher(eventId, requestOptions);
 
-  const query = useSWRMutation(swrKey, swrFn, swrOptions);
+  const query = useSWRMutation<
+    PurchaseResponse,
+    TError,
+    string | readonly [`/events/${string}/tickets/purchase`],
+    PurchaseTicketsBody
+  >(swrKey, swrFn, swrOptions);
 
   return {
     swrKey,

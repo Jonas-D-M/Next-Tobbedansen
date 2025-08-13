@@ -42,6 +42,8 @@ type TicketOrderFormValues = z.infer<typeof ticketOrderSchema>;
 const TicketForm = ({ eventId }: { eventId: string }) => {
   const { data: tickets, error } = useGetEventTickets(eventId);
   const [step, setStep] = useState<'select' | 'form'>('select');
+  const [isMutating, setIsMutating] = useState(false);
+  const [purchaseError, setPurchaseError] = useState<string | null>(null);
   const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
   const router = useRouter();
 
@@ -56,12 +58,6 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
     },
     mode: 'onBlur',
   });
-
-  const {
-    trigger: purchase,
-    isMutating,
-    error: purchaseError,
-  } = usePurchaseTickets(eventId);
 
   const selectedTicket =
     tickets?.find((t) => t.id === selectedTicketId) ?? null;
@@ -82,16 +78,31 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
     try {
       // Exclude emailConfirm from API submission since it's only for client-side validation
       const { emailConfirm, ...purchaseData } = values;
-      const response = await purchase({
-        ticketId: selectedTicketId,
-        ...purchaseData,
-      });
+      setIsMutating(true);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_TICKETS_URL}/events/${eventId}/tickets/purchase`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ticketId: selectedTicketId,
+            ...purchaseData,
+          }),
+        }
+      );
+      const data = await response.json();
 
-      if (response?.checkoutUrl) {
-        router.push(response.checkoutUrl);
+      if (response.ok) {
+        router.push(data.checkoutUrl);
+      } else {
+        setPurchaseError(data.message || 'Er ging iets mis bij het bestellen');
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setIsMutating(false);
     }
   }
 
@@ -252,10 +263,7 @@ const TicketForm = ({ eventId }: { eventId: string }) => {
               </div>
 
               {purchaseError && (
-                <p className='text-sm text-red-500'>
-                  {purchaseError.message ||
-                    'Er ging iets mis bij het bestellen'}
-                </p>
+                <p className='text-sm text-red-500'>{purchaseError}</p>
               )}
 
               <div className='flex justify-between gap-2'>
