@@ -33,6 +33,7 @@
     },
     "lint": {
       "dependsOn": ["^type-check"]
-    }
+    },
+    "normalize:sponsors": {}
   }
 }

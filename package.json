@@ -21,7 +21,8 @@
     "prisma:studio": "turbo run prisma:studio",
     "prisma:migrate-dev": "pnpm --filter @tobbedansen/db prisma:migrate-dev",
     "prisma:migrate-deploy": "pnpm --filter @tobbedansen/db prisma:migrate-deploy",
-    "gen:rest": "turbo run gen:rest"
+    "gen:rest": "turbo run gen:rest",
+    "normalize:sponsors": "pnpm --filter site normalize:sponsors"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
