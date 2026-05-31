@@ -504,6 +504,8 @@ export const RegistrationForm = () => {
   if (
     !isLoading &&
     data &&
+    data.vessel_types &&
+    data.vessel_types.length > 0 &&
     DateTime.fromISO(data.registration_start_date).valueOf() < today.valueOf()
   ) {
     return <FormWrapper currentEvent={data} />;

@@ -18,15 +18,15 @@ generator zod {
 }
 
 model Event {
-  id                      String         @id @default(uuid())
-  year                    Int            @db.Year
+  id                      String            @id @default(uuid())
+  year                    Int               @db.Year
   registration_start_date DateTime
-  registration_end_date   DateTime       @default(now())
-  vessel_types            VesselType[]
+  registration_end_date   DateTime          @default(now())
+  vessel_types            EventVesselType[]
   registrations           Registration[]
-  is_active               Boolean        @default(true)
-  createdAt               DateTime       @default(now())
-  updatedAt               DateTime?      @updatedAt
+  is_active               Boolean           @default(true)
+  createdAt               DateTime          @default(now())
+  updatedAt               DateTime?         @updatedAt
 }
 
 model Participant {
@@ -70,14 +70,29 @@ model Registration {
 }
 
 model VesselType {
-  id              String    @id @default(uuid())
-  max_registrants Int       @default(2)
+  id              String            @id @default(uuid())
+  max_registrants Int               @default(2)
   type            String
   vessels         Vessel[]
-  events          Event[]
-  is_active       Boolean   @default(true)
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime? @updatedAt
+  events          EventVesselType[]
+  is_active       Boolean           @default(true)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime?         @updatedAt
+}
+
+model EventVesselType {
+  id               String     @id @default(uuid())
+  event            Event      @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  event_id         String
+  vessel_type      VesselType @relation(fields: [vessel_type_id], references: [id], onDelete: Cascade)
+  vessel_type_id   String
+  max_participants Int?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime?  @updatedAt
+
+  @@unique([event_id, vessel_type_id])
+  @@index([event_id])
+  @@index([vessel_type_id])
 }
 
 model Vessel {

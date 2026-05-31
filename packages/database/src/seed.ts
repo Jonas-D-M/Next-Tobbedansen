@@ -76,26 +76,33 @@ export const createAdminUser = async (email: string, password: string) => {};
         registration_start_date: today.set({ month: 5 }).toJSDate(),
         year: today.year + 1,
         vessel_types: {
-          create: DEFAULT_VESSEL_TYPES,
+          create: DEFAULT_VESSEL_TYPES.map((vt) => ({
+            max_participants: null,
+            vessel_type: { create: vt },
+          })),
         },
       },
       include: {
-        vessel_types: true,
+        vessel_types: { include: { vessel_type: true } },
       },
     });
     console.log('Event created');
 
     const numberOfRegistrations = 50;
 
+    const vesselTypeIds = event.vessel_types.map(
+      (evt) => evt.vessel_type.id
+    );
     const registrationsTypes = chooseRegistrationVesselType(
-      event.vessel_types.map(({ id }) => id),
+      vesselTypeIds,
       numberOfRegistrations
     );
 
     for (const registrationType of registrationsTypes) {
       const maxRegistrants =
-        event.vessel_types.find(({ id }) => id === registrationType)
-          ?.max_registrants ?? 2;
+        event.vessel_types.find(
+          (evt) => evt.vessel_type.id === registrationType
+        )?.vessel_type.max_registrants ?? 2;
 
       const registrant = generateRegistrants();
 
