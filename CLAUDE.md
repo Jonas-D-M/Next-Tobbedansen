@@ -25,7 +25,7 @@ Dev defaults live in `apps/admin/.env.development` and `apps/site/.env.developme
 
 ## Common commands
 
-Always run from the repo root unless noted. Use pnpm — `packageManager` is pinned and Node `>=20` (see `.nvmrc`: v20.11.1).
+Always run from the repo root unless noted. Use pnpm — `packageManager` is pinned to `pnpm@11.1.1` which requires Node `>=22.13` (see `.nvmrc`: v22.13.1).
 
 ```bash
 pnpm install                      # install deps (postinstall runs manypkg fix)
