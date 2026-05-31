@@ -13,9 +13,6 @@ import {
 import { DataTable as ParticipantTable } from './_participants/data-table';
 import { DataTable as RegistrationTable } from './_registrations/data-table';
 import { deleteRegistrations } from '@/actions/registrations';
-import { Button } from '@/components/ui/button';
-import { Download } from 'lucide-react';
-import { json2csv } from 'json-2-csv';
 import { ExportButton } from '@/components/export-button';
 
 interface PageProps {
@@ -146,29 +143,9 @@ const getRegistrations = async (
   return { registrations, event: { year: event.year } };
 };
 
-const generateCsv = (participants: ParticipantColumnsType[]) => {
-  const csv = json2csv(
-    participants.map((participant) => ({
-      'Tobbe naam': participant.vesselName,
-      'Tobbe type': participant.vesselType,
-      Naam: participant.name,
-      Vereniging: participant.assosciation,
-      Adres: participant.address,
-      Geboorteplaats: participant.placeOfBirth,
-      Geboortedatum: participant.dateOfBirth,
-      'E-mail': participant.email,
-      Opmerking: participant.music_request,
-    })),
-    {}
-  );
-  return csv;
-};
-
 const Page = async ({ params: { eventId } }: PageProps) => {
   const participants = await getParticipants(eventId);
-  const { registrations, event } = await getRegistrations(eventId);
-
-  const csv = generateCsv(participants);
+  const { registrations } = await getRegistrations(eventId);
 
   return (
     <Tabs defaultValue='registrations'>
@@ -181,7 +158,7 @@ const Page = async ({ params: { eventId } }: PageProps) => {
             Deelnemers ({participants.length})
           </TabsTrigger>
         </TabsList>
-        <ExportButton fileName={`tobbedansen-${event.year}.csv`} data={csv} />
+        <ExportButton eventId={eventId} />
       </div>
       <TabsContent value='registrations'>
         <RegistrationTable
