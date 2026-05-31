@@ -1,3 +1,15 @@
 packages:
   - "apps/*"
   - "packages/*"
+onlyBuiltDependencies:
+  - "@fortawesome/fontawesome-common-types"
+  - "@fortawesome/fontawesome-free"
+  - "@fortawesome/fontawesome-svg-core"
+  - "@fortawesome/free-brands-svg-icons"
+  - "@fortawesome/free-regular-svg-icons"
+  - "@fortawesome/free-solid-svg-icons"
+  - "@prisma/client"
+  - "@prisma/engines"
+  - esbuild
+  - prisma
+  - sharp
