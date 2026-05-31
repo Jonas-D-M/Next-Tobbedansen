@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <>
-      <img className='o-banner__image' src='/img/contact.jpeg' />
+      <img className='o-banner__image' src='/img/contact.jpg' />
       <section className='o-row o-row--xl'>
         <div
           style={{ minHeight: '100%' }}

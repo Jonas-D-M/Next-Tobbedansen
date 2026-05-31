@@ -34,9 +34,9 @@ const Page = () => {
                 <h2>Waar kan ik tickets kopen?</h2>
                 <div className='c-lead c-lead--text u-mb-lg'>
                   <p>
-                    Tickets zijn uitsluitend te kopen aan de kassa. Een ticket
-                    voor vrijdag kost 6 euro, zaterdag 5 euro en een combiticket
-                    10 euro
+                    Tickets zijn online of aan de kassa verkrijgbaar. Een
+                    ticket voor vrijdag kost 6 euro, zaterdag 5 euro en een
+                    combiticket 10 euro.
                   </p>
                 </div>
                 <h2>Met de fiets?</h2>
@@ -62,13 +62,13 @@ const Page = () => {
                   <ul>
                     <li>
                       <p>
-                        Op vrijdag 5 september openen de deuren om 19u en
+                        Op vrijdag 4 september openen de deuren om 19u en
                         sluiten we de eerste avond af om 2u.
                       </p>
                     </li>
                     <li>
                       <p>
-                        Op zaterdag 6 september gaan de deuren open om 14u, de
+                        Op zaterdag 5 september gaan de deuren open om 14u, de
                         eerste tobbe duikt van de schans af om 14u30. Om 4u gaan
                         de deuren dicht en keert de rust terug op het Roger
                         Raveelplein.

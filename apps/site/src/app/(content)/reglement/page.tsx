@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <>
-      <img className='o-banner__image' src='/img/contact.jpg' />
+      <img className='o-banner__image' src='/img/reglement.jpg' />
       <section className='o-row o-row--xl'>
         <div className='u-max-width-xl'>
           <article className='o-section o-section--xl'>

@@ -21,7 +21,7 @@ const Page = () => {
 
   return (
     <>
-      <img className='o-banner__image' src='/img/contact.jpg' />
+      <img className='o-banner__image' src='/img/tickets.jpg' />
       <section className='o-row o-row--xl'>
         <div className='o-container u-max-width-xl'>
           <article className='o-section o-section--xl'>

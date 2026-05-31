@@ -27,33 +27,31 @@ const Page = () => {
               </div>
               <div className='o-layout__item u-1-of-2-bp3'>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Zaterdag gaan we door met het originele idee, gebaseerd op het
-                  bekende TROS-programma “TER LAND, TER ZEE EN IN DE LUCHT”,
-                  waarbij de deelnemers met een zelf in elkaar geknutselde tobbe
-                  van een schans naar beneden rijden of glijden en zo snel
-                  mogelijk de bel proberen te bereiken.
+                  Zaterdag gaan we opnieuw voor het originele concept,
+                  geïnspireerd op het legendarische TROS-programma “Ter Land,
+                  Ter Zee en in de Lucht”. Het idee blijft simpel en plezant:
+                  deelnemers razen met een zelfgebouwde tobbe van een schans
+                  naar beneden en proberen zo snel mogelijk de bel te bereiken.
                 </p>
 
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Dit jaar gaan we verder met ons nieuw concept. Aan de start
-                  worden de deelnemers naar beneden geduwd om met een degelijke
-                  snelheid van de schans (met een helling van ± 20°) te razen.
-                  Vanaf deze schans komt de tobbe rechtstreeks in het water
-                  terecht, eenmaal in het water varen/pedellen/… de deelnemers
-                  zo snel mogelijk naar het obstakel. Het obstakel zal je moeten
-                  opklimmen waarna je een hangbrug zal moeten overwinnen
-                  vooraleer je de bel kan luiden. Wanneer je als deelnemer
-                  uiteindelijk de bel kan luiden kan je prachtige prijzen binnen
-                  halen. Heb je veel zin om deel te nemen en prachtige prijzen
-                  te winnen, maar ben je net niet handig genoeg, te lui of heb
-                  je geen tijd om zelf een tobbe te bouwen? Dan kun je altijd
-                  deelnemen met onze eigen tobbe: de tobtobbe! Onze tobbe is
-                  geschikt voor 1 persoon of maximaal 2 personen.
+                  Dit jaar werken we voor de laatste keer verder met het
+                  parcours van vorig jaar. Aan de start krijgen de deelnemers
+                  een stevige duw, zodat ze met voldoende snelheid van de
+                  schans (met een helling van ongeveer 20°) naar beneden
+                  knallen. Onderaan belandt de tobbe rechtstreeks in het water,
+                  waarna het aan de deelnemers is om zo snel mogelijk verder te
+                  varen, peddelen of ploeteren richting het obstakel. Daar stopt
+                  het nog niet: eens aangekomen aan het obstakel moet je eerst
+                  omhoog klauteren en daarna een hangbrug trotseren voor je
+                  uiteindelijk de bel kan luiden. En wie de bel weet te halen?
+                  Die maakt uiteraard kans op prachtige prijzen.
                 </p>
 
                 <p className='c-lead c-lead--text'>
-                  Vergeet zeker niet om het reglement er eens op na te lezen,
-                  hierin is duidelijk uitgelegd wat wel en niet mag.
+                  Vergeet zeker niet om het reglement eens goed door te nemen.
+                  Daarin staat duidelijk uitgelegd wat wel en niet mag, zodat
+                  iedereen veilig én eerlijk kan deelnemen.
                 </p>
                 <br />
                 <p className='c-lead c-lead--text'>Bovenaanzicht:</p>
@@ -69,75 +67,65 @@ const Page = () => {
                   src='/img/parcour-2.jpg'
                   alt='parcour'
                 />
-                {/* <div className='iframeWrapper u-mb-lg'>
-                  <iframe
-                    width='560'
-                    height='349'
-                    src='https://www.youtube-nocookie.com/embed/w46RTqZscoM'
-                    title='YouTube video player'
-                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                    allowFullScreen
-                  />
-                </div> */}
 
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  <b>Zaterdag 6 september 2025</b> wordt een dag om niet snel te
-                  vergeten! Na de prijsuitreiking gaan we meteen door met een
-                  tweede spetterend feestje, en dat doen we in stijl.{' '}
-                  <b>Opt Gemakske</b> bijt de spits af en zet de toon. Daarna
-                  maken <b>The Juliets</b> hun langverwachte comeback in
-                  Machelen, en zorgen ze net na het vuurwerk voor een knallend
-                  vervolg.
+                  <b>Zaterdag 5 september 2026</b> wordt opnieuw een dag om
+                  niet snel te vergeten! Na de prijsuitreiking schakelen we
+                  meteen over naar een tweede spetterend feestje, en dat doen
+                  we zoals altijd in stijl. <b>The Bumbelbeez</b> bijten de
+                  spits af van <b>20u tot 21u15</b> met hun energieke live
+                  coverband die elk evenement moeiteloos omtovert tot een
+                  onvergetelijk feest. Daarna is het van <b>22u15 tot 23u45</b>{' '}
+                  de beurt aan <b>Coockies and Cream</b>, een absolute must-have
+                  coverband die niet alleen muzikaal sterk uitpakt, maar ook
+                  zorgt voor een flamboyant spektakel op het podium. Verwacht
+                  ambiance, show en een plein dat volledig losgaat.
                   <br />
                   <br />
-                  Maar daar stopt het niet!
+                  Maar daar stopt het natuurlijk niet!
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Onze vaste waarde en resident DJ van Tobbedansen, <b>MILES</b>
-                  , houdt de sfeer hoog, gevolgd door <b>DJ Voltage</b> (bekend
-                  van Qmusic, Tomorrowland, Zeverrock, Hype’O Dream…). Als kers
-                  op de taart brengt <b>Studio Chewy</b> (Campo Solar, Studio
-                  Brussel…) Tobbedansen 2025 naar een zinderende finale.
+                  Vanaf middernacht neemt onze vaste waarde en resident DJ van
+                  Tobbedansen, <b>DJ Miles</b>, het over van <b>24u tot 1u</b>{' '}
+                  om de sfeer stevig vast te houden en iedereen op de
+                  dansvloer te houden. Vervolgens is het de beurt aan{' '}
+                  <b>Mr. Noisy</b> van <b>1u tot 2u30</b>, onze eigen
+                  Machelenaar die je misschien kent van Studio Brussel, waar
+                  hij in 2024 en 2025 wekelijks de ‘minifuif voor maxipret’
+                  verzorgde. Met zijn vlotte mix van de beste tracks uit de
+                  jaren nul weet hij als geen ander hoe hij het publiek moet
+                  laten meezingen en dansen. Als kers op de taart sluiten we af
+                  met <b>C-Track</b>, die van <b>2u30 tot 4u</b> zorgt voor een
+                  stevige finale en Tobbedansen 2026 tot in de vroege uurtjes
+                  laat nazinderen.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  Schrijf 6 september 2025 dus in jullie agenda, wij kijken
-                  alvast uit naar jullie originele constructies en het feestje
-                  achteraf, jullie hopelijk ook.
+                  Schrijf zaterdag 5 september 2026 dus met stip in jullie
+                  agenda. Wij kijken alvast uit naar jullie originele
+                  constructies én het feestje achteraf… jullie hopelijk ook!
                 </p>
                 <p className='c-lead c-lead--text'>Tot dan!</p>
-                {/* <div className="c-lead c-lead--text u-mb-lg">
-                <video controls autoPlay muted className="videoInsert">
-                  <source src="assets/video/aftermovie.mp4" type="video/mp4" />
-                  Het is helaas niet mogelijk om onze aftermovie op deze browser
-                  te tonen :(
-                </video>
-              </div> */}
                 <LineupBlock
                   items={[
                     {
-                      label: 'Opt Gemakske',
-                      time: '20u – 21u30',
-                      image: '/img/artists/saturday/1.jpg',
+                      label: 'The Bumbelbeez',
+                      time: '20u – 21u15',
                     },
                     {
-                      label: 'The Juliets',
-                      time: '22u30 - 24u',
-                      image: '/img/artists/saturday/2-HORIZONTAAL.jpg',
+                      label: 'Coockies and Cream',
+                      time: '22u15 – 23u45',
                     },
                     {
-                      label: 'Miles',
-                      time: '24u - 01u',
-                      image: '/img/artists/saturday/3.jpeg',
+                      label: 'DJ Miles',
+                      time: '24u – 1u',
                     },
                     {
-                      label: 'DJ Voltage',
-                      time: '01u - 02u30',
-                      image: '/img/artists/saturday/4.jpg',
+                      label: 'Mr. Noisy',
+                      time: '1u – 2u30',
                     },
                     {
-                      label: 'Studio Chewy',
-                      time: '02u30 - 04u',
-                      image: '/img/artists/saturday/5.png',
+                      label: 'C-Track',
+                      time: '2u30 – 4u',
                     },
                   ]}
                 />
