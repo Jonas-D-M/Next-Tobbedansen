@@ -65,11 +65,45 @@ const generateRegistrants = (): RegistrantCreateBody => {
   };
 };
 
-export const createAdminUser = async (email: string, password: string) => {};
+const ARGON2_OPTIONS = {
+  memoryCost: 19456,
+  timeCost: 2,
+  outputLen: 32,
+  parallelism: 1,
+} as const;
+
+export const createAdminUser = async (email: string, password: string) => {
+  const normalizedEmail = email.toLowerCase();
+
+  const existing = await Prisma.user.findUnique({
+    where: { email: normalizedEmail },
+  });
+  if (existing) {
+    console.log(`Admin user "${normalizedEmail}" already exists, skipping.`);
+    return existing;
+  }
+
+  const password_hash = await hash(password, ARGON2_OPTIONS);
+  const user = await Prisma.user.create({
+    data: {
+      id: generateIdFromEntropySize(10),
+      email: normalizedEmail,
+      password_hash,
+    },
+  });
+  console.log(`Admin user "${normalizedEmail}" created.`);
+  return user;
+};
 
 (async () => {
   try {
     console.log('--------- SEEDING ---------');
+
+    const adminEmail = process.env.ADMIN_EMAIL ?? 'admin@tobbedansen.local';
+    const adminPassword = process.env.ADMIN_PASSWORD ?? 'tobbedansen';
+    console.log(`Seeding admin user...`);
+    await createAdminUser(adminEmail, adminPassword);
+
     console.log(`Seeding event...`);
     const event = await Prisma.event.create({
       data: {
