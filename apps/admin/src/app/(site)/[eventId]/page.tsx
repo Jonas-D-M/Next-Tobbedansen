@@ -14,6 +14,7 @@ import { DataTable as ParticipantTable } from './_participants/data-table';
 import { DataTable as RegistrationTable } from './_registrations/data-table';
 import { deleteRegistrations } from '@/actions/registrations';
 import { ExportButton } from '@/components/export-button';
+import { EventInfoPanel, VesselTypeStat } from '@/components/event';
 
 interface PageProps {
   params: {
@@ -98,17 +99,33 @@ const getParticipants = async (
   return participants;
 };
 
+type EventMeta = {
+  year: number;
+  registration_start_date: Date;
+  registration_end_date: Date;
+  is_active: boolean;
+  vessel_types: VesselTypeStat[];
+};
+
 const getRegistrations = async (
   eventId: string
 ): Promise<{
   registrations: RegistrationColumns[];
-  event: { year: number };
+  event: EventMeta;
 }> => {
   const event = await prisma.event.findUniqueOrThrow({
     where: {
       id: eventId,
     },
     include: {
+      vessel_types: {
+        include: {
+          vessel_type: {
+            select: { id: true, type: true, max_registrants: true },
+          },
+        },
+        orderBy: { vessel_type: { type: 'asc' } },
+      },
       registrations: {
         orderBy: {
           createdAt: 'desc',
@@ -118,6 +135,7 @@ const getRegistrations = async (
           vessel: {
             select: {
               name: true,
+              vessel_type_id: true,
               type: {
                 select: {
                   type: true,
@@ -125,10 +143,22 @@ const getRegistrations = async (
               },
             },
           },
+          _count: { select: { participants: true } },
         },
       },
     },
   });
+
+  const countsByVesselTypeId = new Map<string, number>();
+  for (const registration of event.registrations) {
+    const vesselTypeId = registration.vessel.vessel_type_id;
+    const slotCount = 1 + registration._count.participants;
+    countsByVesselTypeId.set(
+      vesselTypeId,
+      (countsByVesselTypeId.get(vesselTypeId) ?? 0) + slotCount
+    );
+  }
+
   const registrations = event.registrations.map((registration) => ({
     id: registration.id,
     vesselName: registration.vessel.name,
@@ -140,17 +170,43 @@ const getRegistrations = async (
     sent_confirmation_email: registration.sent_confirmation_email,
   }));
 
-  return { registrations, event: { year: event.year } };
+  const vessel_types: VesselTypeStat[] = event.vessel_types.map((evt) => ({
+    id: evt.vessel_type.id,
+    type: evt.vessel_type.type,
+    max_registrants: evt.vessel_type.max_registrants,
+    max_participants: evt.max_participants,
+    participantCount: countsByVesselTypeId.get(evt.vessel_type.id) ?? 0,
+  }));
+
+  return {
+    registrations,
+    event: {
+      year: event.year,
+      registration_start_date: event.registration_start_date,
+      registration_end_date: event.registration_end_date,
+      is_active: event.is_active,
+      vessel_types,
+    },
+  };
 };
 
 const Page = async ({ params: { eventId } }: PageProps) => {
   const participants = await getParticipants(eventId);
-  const { registrations } = await getRegistrations(eventId);
+  const { registrations, event } = await getRegistrations(eventId);
 
   return (
-    <Tabs defaultValue='registrations'>
-      <div className='flex justify-between'>
-        <TabsList>
+    <>
+      <EventInfoPanel
+        eventId={eventId}
+        registration_start_date={event.registration_start_date}
+        registration_end_date={event.registration_end_date}
+        participantCount={participants.length}
+        vessel_types={event.vessel_types}
+        is_active={event.is_active}
+      />
+      <Tabs defaultValue='registrations'>
+        <div className='flex justify-between'>
+          <TabsList>
           <TabsTrigger value='registrations'>
             Registraties ({registrations.length})
           </TabsTrigger>
@@ -167,10 +223,11 @@ const Page = async ({ params: { eventId } }: PageProps) => {
           data={registrations}
         />
       </TabsContent>
-      <TabsContent value='participants'>
-        <ParticipantTable columns={participantColumns} data={participants} />
-      </TabsContent>
-    </Tabs>
+        <TabsContent value='participants'>
+          <ParticipantTable columns={participantColumns} data={participants} />
+        </TabsContent>
+      </Tabs>
+    </>
   );
 };
 
