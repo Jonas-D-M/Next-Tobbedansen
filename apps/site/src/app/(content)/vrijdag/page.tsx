@@ -50,7 +50,7 @@ const Page = () => {
                   meezingers, stilstaan wordt moeilijk van <b>24u tot 1u</b>. En
                   wie dan nog energie over heeft, kan blijven hangen voor de
                   afsluiter van de avond. Van <b>1u tot 2u</b> neemt{' '}
-                  <b>Meedaase</b>, een DJ-duo met Ghanese roots, het over om
+                  <b>Medaase</b>, een DJ-duo met Ghanese roots, het over om
                   de nacht stijlvol af te ronden en het laatste beetje energie
                   uit het plein te persen.
                 </p>
@@ -79,7 +79,7 @@ const Page = () => {
                       time: '24u – 1u',
                     },
                     {
-                      label: 'Meedaase',
+                      label: 'Medaase',
                       time: '1u – 2u',
                     },
                   ]}
