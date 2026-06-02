@@ -29,13 +29,13 @@ const Page = () => {
                 <p className='c-lead c-lead--text u-mb-lg'>
                   Iedereen die er de vorige edities bij was, weet het
                   ondertussen: Tobbedansen staat garant voor sfeer, muziek en
-                  een plein dat tot in de late uurtjes blijft bewegen. Ook
-                  vorig jaar was het weer prijs: veel ambiance, lachende
-                  gezichten en een dansvloer die geen seconde leeg stond.
+                  een plein dat tot in de late uurtjes blijft bewegen. Ook vorig
+                  jaar was het weer prijs: veel ambiance, lachende gezichten en
+                  een dansvloer die geen seconde leeg stond.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
-                  En ook dit jaar staan we weer klaar met een line-up die er
-                  mag zijn. We trappen af van <b>20u tot 21u30</b> met{' '}
+                  En ook dit jaar staan we weer klaar met een line-up die er mag
+                  zijn. We trappen af van <b>20u tot 21u30</b> met{' '}
                   <b>Pink Ties</b>, een bende jong geweld op het podium.
                   Verwacht frisse energie, bekende nummers en meteen de juiste
                   sfeer om de avond goed in gang te trekken. Daarna is het van{' '}
@@ -50,9 +50,9 @@ const Page = () => {
                   meezingers, stilstaan wordt moeilijk van <b>24u tot 1u</b>. En
                   wie dan nog energie over heeft, kan blijven hangen voor de
                   afsluiter van de avond. Van <b>1u tot 2u</b> neemt{' '}
-                  <b>Medaase</b>, een DJ-duo met Ghanese roots, het over om
-                  de nacht stijlvol af te ronden en het laatste beetje energie
-                  uit het plein te persen.
+                  <b>Medaase</b>, een DJ-duo met Ghanese roots, het over om de
+                  nacht stijlvol af te ronden en het laatste beetje energie uit
+                  het plein te persen.
                 </p>
                 <p className='c-lead c-lead--text u-mb-lg'>
                   Kort gezegd: alle ingrediënten zijn opnieuw aanwezig voor een
