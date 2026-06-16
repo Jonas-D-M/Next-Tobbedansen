@@ -95,6 +95,7 @@ export const createEvent = async (
   const yearRaw = formData.get('year');
   const startRaw = formData.get('registration_start_date');
   const endRaw = formData.get('registration_end_date');
+  const noteRaw = formData.get('note');
 
   const year = Number(yearRaw);
   if (!Number.isInteger(year) || year < 2000 || year > 2100) {
@@ -117,6 +118,9 @@ export const createEvent = async (
     return { error: 'Einddatum moet na de startdatum liggen.' };
   }
 
+  const note =
+    typeof noteRaw === 'string' && noteRaw.trim() !== '' ? noteRaw.trim() : null;
+
   const { rows: vesselTypes, error } = parseVesselTypeRows(formData, false);
   if (error) return { error };
 
@@ -130,6 +134,7 @@ export const createEvent = async (
       year,
       registration_start_date: start,
       registration_end_date: end,
+      note,
       vessel_types: {
         create: vesselTypes.map(
           ({ type, max_registrants, max_participants }) => ({
@@ -154,6 +159,7 @@ export const updateEvent = async (
 ): Promise<UpdateEventResult> => {
   const startRaw = formData.get('registration_start_date');
   const endRaw = formData.get('registration_end_date');
+  const noteRaw = formData.get('note');
 
   if (typeof startRaw !== 'string' || !startRaw) {
     return { error: 'Startdatum is verplicht.' };
@@ -170,6 +176,9 @@ export const updateEvent = async (
   if (end < start) {
     return { error: 'Einddatum moet na de startdatum liggen.' };
   }
+
+  const note =
+    typeof noteRaw === 'string' && noteRaw.trim() !== '' ? noteRaw.trim() : null;
 
   const { rows: vesselTypes, error } = parseVesselTypeRows(formData, true);
   if (error) return { error };
@@ -236,6 +245,7 @@ export const updateEvent = async (
       data: {
         registration_start_date: start,
         registration_end_date: end,
+        note,
         ...(toCreate.length > 0
           ? {
               vessel_types: {

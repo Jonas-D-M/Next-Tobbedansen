@@ -7,6 +7,7 @@ import { Plus, Trash2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { createEvent, CreateEventResult } from '@/actions/events';
 
 const Field = ({
@@ -130,6 +131,18 @@ export const NewEventForm = ({ defaults }: NewEventFormProps) => {
           />
         </Field>
       </div>
+
+      <Field
+        label='Mededeling'
+        htmlFor='note'
+        hint='Optioneel. Wordt bovenaan het inschrijvingsformulier op de site getoond.'>
+        <Textarea
+          id='note'
+          name='note'
+          rows={3}
+          placeholder='Bv. extra info of een belangrijke mededeling voor de deelnemers…'
+        />
+      </Field>
 
       <div className='flex flex-col gap-3'>
         <div className='flex items-baseline justify-between'>

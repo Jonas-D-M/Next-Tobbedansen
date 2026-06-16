@@ -39,6 +39,7 @@ const Page = async ({ params: { eventId } }: PageProps) => {
   const defaults = {
     start: toInputDate(event.registration_start_date),
     end: toInputDate(event.registration_end_date),
+    note: event.note ?? '',
     vessel_types: event.vessel_types.map((evt) => ({
       event_vessel_type_id: evt.id,
       type: evt.vessel_type.type,
