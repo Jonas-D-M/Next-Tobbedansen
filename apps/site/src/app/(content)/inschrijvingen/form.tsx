@@ -34,6 +34,7 @@ interface CurrentEvent {
   id: string;
   year: number;
   registration_start_date: string;
+  note: string | null;
   vessel_types: VesselTypes[];
 }
 
@@ -188,6 +189,13 @@ export const FormWrapper = ({ currentEvent }: FormWrapperProps) => {
           <p className='px-3 font-normal text-xs leading-none text-black mb-2'>
             {`* Verplicht veld`}
           </p>
+          {currentEvent.note ? (
+            <div className='w-full px-3 mb-3'>
+              <div className='rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 whitespace-pre-wrap'>
+                {currentEvent.note}
+              </div>
+            </div>
+          ) : null}
           <FormField
             control={control}
             name='vessel.vessel_type_id'
