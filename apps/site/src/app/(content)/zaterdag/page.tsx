@@ -110,22 +110,27 @@ const Page = () => {
                     {
                       label: 'The Bumbelbeez',
                       time: '20u – 21u15',
+                      image: '/img/artists/saturday/bumbelbeez.jpg',
                     },
                     {
                       label: 'Coockies and Cream',
                       time: '22u15 – 23u45',
+                      image: '/img/artists/saturday/coockies.jpg',
                     },
                     {
                       label: 'DJ Miles',
                       time: '24u – 1u',
+                      image: '/img/artists/saturday/miles.jpg',
                     },
                     {
                       label: 'Mr. Noisy',
                       time: '1u – 2u30',
+                      image: '/img/artists/saturday/mr-noisy.jpg',
                     },
                     {
                       label: 'C-Track',
                       time: '2u30 – 4u',
+                      image: '/img/artists/saturday/c-track.jpg',
                     },
                   ]}
                 />

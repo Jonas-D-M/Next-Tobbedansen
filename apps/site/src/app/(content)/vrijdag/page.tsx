@@ -69,18 +69,22 @@ const Page = () => {
                     {
                       label: 'Pink Ties',
                       time: '20u – 21u30',
+                      image: '/img/artists/friday/pink-ties.jpg',
                     },
                     {
                       label: 'Blue Dawn',
                       time: '22u15 – 23u45',
+                      image: '/img/artists/friday/blue-dawn.jpg',
                     },
                     {
                       label: 'Dave & Danny',
                       time: '24u – 1u',
+                      image: '/img/artists/friday/dave-danny.jpg',
                     },
                     {
                       label: 'Medaase',
                       time: '1u – 2u',
+                      image: '/img/artists/friday/medaase.jpg',
                     },
                   ]}
                 />
