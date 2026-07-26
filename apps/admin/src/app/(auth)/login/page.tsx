@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { H1 } from '@/components/typography';
 import { generateIdFromEntropySize } from 'lucia';
 
-async function login(formData: FormData): Promise<ActionResult> {
+async function login(formData: FormData): Promise<void> {
   'use server';
   const username = formData.get('username');
   if (
@@ -17,9 +17,7 @@ async function login(formData: FormData): Promise<ActionResult> {
     username.length < 3 ||
     username.length > 31
   ) {
-    return {
-      error: 'Invalid username',
-    };
+    return;
   }
   const password = formData.get('password');
   if (
@@ -27,9 +25,7 @@ async function login(formData: FormData): Promise<ActionResult> {
     password.length < 6 ||
     password.length > 255
   ) {
-    return {
-      error: 'Invalid password',
-    };
+    return;
   }
 
   const existingUser = await prisma.user.findFirst({
@@ -47,9 +43,7 @@ async function login(formData: FormData): Promise<ActionResult> {
     // Since protecting against this is non-trivial,
     // it is crucial your implementation is protected against brute-force attacks with login throttling etc.
     // If usernames are public, you may outright tell the user that the username is invalid.
-    return {
-      error: 'Incorrect username or password',
-    };
+    return;
   }
 
   const validPassword = await verify(existingUser.password_hash, password, {
@@ -59,9 +53,7 @@ async function login(formData: FormData): Promise<ActionResult> {
     parallelism: 1,
   });
   if (!validPassword) {
-    return {
-      error: 'Incorrect username or password',
-    };
+    return;
   }
 
   const session = await lucia.createSession(existingUser.id, {});
@@ -73,10 +65,6 @@ async function login(formData: FormData): Promise<ActionResult> {
   );
 
   return redirect('/');
-}
-
-interface ActionResult {
-  error: string;
 }
 
 const Page = async () => {
