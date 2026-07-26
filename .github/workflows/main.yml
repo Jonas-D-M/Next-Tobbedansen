@@ -32,7 +32,7 @@ jobs:
         run: pnpm run build --filter=site...
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_HOSTNAME }}
           username: ${{ secrets.FTP_USERNAME }}
