@@ -17,18 +17,18 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@types/node": "^20",
-    "prisma": "^5.12.1",
+    "@types/node": "^20.19.43",
+    "prisma": "^5.22.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@node-rs/argon2": "^1.8.3",
-    "@prisma/client": "^5.12.1",
-    "@types/luxon": "^3.4.2",
-    "lucia": "^3.2.0",
-    "luxon": "^3.4.4",
-    "zod": "^3.23.4",
-    "zod-prisma-types": "^3.1.6"
+    "@prisma/client": "^5.22.0",
+    "@types/luxon": "^3.7.2",
+    "lucia": "^3.2.2",
+    "luxon": "^3.7.2",
+    "zod": "^3.25.76",
+    "zod-prisma-types": "^3.3.11"
   }
 }
