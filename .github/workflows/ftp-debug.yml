@@ -1,0 +1,31 @@
+name: 🔍 FTP connectivity debug
+on:
+  workflow_dispatch:
+jobs:
+  ftp-debug:
+    name: Probe FTP reachability from the runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runner public IP
+        run: |
+          echo "Runner egress IP:"
+          curl -s https://api.ipify.org; echo
+
+      - name: TCP connect to your FTP server (port 21)
+        run: |
+          echo "== raw TCP connect to plesk03 :21 =="
+          timeout 20 bash -c 'cat < /dev/null > /dev/tcp/plesk03.yourmindourwork.be/21' \
+            && echo "CONNECT OK" || echo "CONNECT FAILED/TIMEOUT"
+
+      - name: Explicit FTPS handshake against your server
+        run: |
+          echo "== curl FTPS to plesk03 (15s connect timeout) =="
+          curl -v --connect-timeout 15 --ssl-reqd \
+            ftp://plesk03.yourmindourwork.be/ \
+            --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" \
+            --ftp-pasv || true
+
+      - name: Control — reach a known-good public FTP
+        run: |
+          echo "== proves the runner CAN do outbound FTP at all =="
+          curl -v --connect-timeout 15 ftp://ftp.gnu.org/ || true
